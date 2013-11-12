@@ -7,6 +7,8 @@ package graph;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import objects.*;
 
@@ -68,5 +70,17 @@ public class LFunction {
     	return null;
     }
     
-    
+    public void addAll(LFunction lf){
+    	if (lf!=null){
+    		Set<Entry<Node, FunctionElement>> entries=lf.LFunction_Map.entrySet();
+        	for (Entry<Node, FunctionElement> e : entries){
+        		Node n=e.getKey();
+        		FunctionElement fe=e.getValue();
+        		if (!this.LFunction_Map.containsKey(n)){
+        			this.LFunction_Map.put(n, fe);
+        		}
+        		
+        	}
+    	}
+    }   
 }

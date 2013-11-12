@@ -82,7 +82,6 @@ public class MapAlgorithm {
 			
 		}
 		
-		
 		toReturn=new AttackGraph(Nr, Np, Nd, E, L, g);
 		return toReturn;
 	}

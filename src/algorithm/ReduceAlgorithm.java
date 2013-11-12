@@ -28,39 +28,20 @@ public class ReduceAlgorithm {
 		HashSet<DerivedNode> NdFinal=new HashSet<DerivedNode>();
 		HashSet<Edge> EFinal=new HashSet<Edge>();
 		LFunction LFinal=new LFunction();
-		Goal goalFinal=new Goal();
+		Goal goalFinal=null;
 		
 		//Do the reduction here.
 		for (AttackGraph graph : graphsToReduce){
-			reduceNr(NrFinal, graph.getNr(), LFinal, graph.getLf());
-			reduceNp(NpFinal, graph.getNp(), LFinal, graph.getLf());
-			reduceNd(NdFinal, graph.getNd(), LFinal, graph.getLf());
-			reduceEdges(EFinal, graph.getE(), LFinal, graph.getLf());
-			reduceLFunction(LFinal, graph.getLf());
+			
+			NrFinal.addAll(graph.getNr());
+			NpFinal.addAll(graph.getNp());
+			NdFinal.addAll(graph.getNd());
+			EFinal.addAll(graph.getE());
+			LFinal.addAll(graph.getLf());
 			reduceGoal(goalFinal, graph.getG());
 		}
 		
 		return new AttackGraph(NrFinal, NpFinal, NdFinal, EFinal, LFinal, goalFinal);
-	}
-	
-	private void reduceNr(HashSet<DerivationNode> nodes1, HashSet<DerivationNode> nodes2, LFunction L1, LFunction L2){
-		
-	}
-	
-	private void reduceNp(HashSet<PrimitiveNode> nodes1, HashSet<PrimitiveNode> nodes2, LFunction L1, LFunction L2){
-		
-	}
-	
-	private void reduceNd(HashSet<DerivedNode> nodes1, HashSet<DerivedNode> nodes2, LFunction L1, LFunction L2){
-		
-	}
-	
-	private void reduceEdges(HashSet<Edge> edge1, HashSet<Edge> edge2, LFunction L1, LFunction L2){
-		
-	}
-	
-	private void reduceLFunction(LFunction L1, LFunction L2){
-		
 	}
 	
 	private void reduceGoal(Goal g1, Goal g2){
