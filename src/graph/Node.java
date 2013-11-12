@@ -6,31 +6,24 @@ package graph;
 
 import java.util.Objects;
 
+import objects.FunctionElement;
+
 /**
  *
  * @author Gautham
  */
 public abstract class Node {
 	
-    private int id;
-    private String name;
-   
-    public Node(int cur_id, String cur_name) {
-        id = cur_id;
-        name = cur_name;
+	private FunctionElement element;
+	
+    public Node(FunctionElement element) {
+        this.element=element;
     }
     
-    public Node(int cur_id){
-    	id=cur_id;
-    	name="";
-    }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 29 * hash + this.id;
-        hash = 23 * hash + Objects.hashCode(this.name);
-        return hash;
+        return element.hashCode();
     }
 
     @Override
@@ -42,31 +35,18 @@ public abstract class Node {
             return false;
         }
         final Node other = (Node) obj;
-        if (this.id != other.id) {
-            return false;
+        
+        if (this.element.equals(other.element)){
+        	
+        	return true;
         }
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-        return true;
+        return false;
     }
  
-
-    public int getID() {
-        int cur_id = this.id;
-        return cur_id;
+    public FunctionElement getElement(){
+    	return element;
     }
-
-    public String getName() {
-        String cur_name = this.name;
         
-        return cur_name;
-        
-    }
     
-    public int ComparesTo(Node nodeobj){
-    int result=this.ComparesTo(nodeobj);
-    return result;
-    }
 }
 

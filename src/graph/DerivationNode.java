@@ -4,6 +4,8 @@
  */
 package graph;
 
+import objects.FunctionElement;
+
 /**
  *
  * @author Gautham
@@ -11,13 +13,8 @@ package graph;
 public class DerivationNode extends Node{
  
   
-    public DerivationNode(int id,String name){
-    	super(id, name);
+    public DerivationNode(FunctionElement element){
+    	super(element);
     }
-    
-    public DerivationNode(int id){
-    	super(id);
-    }
-    
     
 }

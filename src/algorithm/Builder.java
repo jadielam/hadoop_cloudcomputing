@@ -1,36 +1,32 @@
 package algorithm;
 
 import objects.Fact;
+import objects.FunctionElement;
 import graph.DerivationNode;
 import graph.DerivedNode;
 import graph.PrimitiveNode;
 
 public class Builder {
 
-	private int counter;
+	
 	
 	public Builder(){
-		counter=0;
+		
 	}
 	
-	public DerivationNode getDerivationNode(){
-		DerivationNode toReturn=new DerivationNode(counter);
-		counter=counter+1;
-		
+	public DerivationNode getDerivationNode(FunctionElement element){
+		DerivationNode toReturn=new DerivationNode(element);
 		return toReturn;
 	}
 	
-	public DerivedNode getDerivedNode(){
-		DerivedNode toReturn=new DerivedNode(counter);
-		counter=counter+1;
-		
+	public DerivedNode getDerivedNode(FunctionElement element){
+		DerivedNode toReturn=new DerivedNode(element);
 		return toReturn;
 	}
 	
-	public PrimitiveNode getPrimitiveNode(){
-		PrimitiveNode toReturn=new PrimitiveNode(counter);
-		counter=counter+1;
-		
+	public PrimitiveNode getPrimitiveNode(FunctionElement element){
+		PrimitiveNode toReturn=new PrimitiveNode(element);
+			
 		return toReturn;
 	}
 	

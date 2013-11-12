@@ -4,17 +4,15 @@
  */
 package graph;
 
+import objects.FunctionElement;
+
 /**
  *
  * @author Gautham
  */
 public class DerivedNode extends Node {
     
-  public DerivedNode(int id, String name){
-	  super(id, name);
-  }
-  
-  public DerivedNode(int id){
-	  super(id);
+  public DerivedNode(FunctionElement element){
+	  super(element);
   }
 }

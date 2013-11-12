@@ -4,17 +4,16 @@
  */
 package graph;
 
+import objects.FunctionElement;
+
 /**
  *
  * @author Gautham
  */
 public class PrimitiveNode extends Node {
   
-  public PrimitiveNode(int id, String name){
-	  super(id, name);
+  public PrimitiveNode(FunctionElement element){
+	  super(element);
   }
   
-  public PrimitiveNode(int id){
-	  super(id);
-  }
 }

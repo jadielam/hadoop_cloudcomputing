@@ -1,6 +1,6 @@
 package objects;
 
-public class TraceStep {
+public class TraceStep implements FunctionElement {
 	private InteractionRule interactionrule;
 	private Fact fact;
 	private Conjunct conjunct;

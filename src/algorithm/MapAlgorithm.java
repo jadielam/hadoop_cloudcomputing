@@ -40,7 +40,7 @@ public class MapAlgorithm {
 		for (TraceStep t : traceSteps){
 			
 			//3. Create derivation node
-			DerivationNode r=builder.getDerivationNode();
+			DerivationNode r=builder.getDerivationNode(t);
 			Nr.add(r);
 			L.addEntry(r, t.getInteractionrule());
 			
@@ -50,7 +50,7 @@ public class MapAlgorithm {
 			
 			//5. If such n does not exist, create a new one.
 			if (n==null){
-				n=builder.getDerivedNode();
+				n=builder.getDerivedNode(fact);
 				L.addEntry(n, fact);
 			}
 			
@@ -66,11 +66,11 @@ public class MapAlgorithm {
 				if (c==null){
 					
 					if (builder.isPrimitive(f)){
-						c=builder.getPrimitiveNode();
+						c=builder.getPrimitiveNode(f);
 						Np.add((PrimitiveNode)c);
 					}
 					else{
-						c=builder.getDerivedNode();
+						c=builder.getDerivedNode(f);
 						Nd.add((DerivedNode)c);
 					}
 					
