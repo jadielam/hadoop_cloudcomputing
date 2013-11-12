@@ -11,6 +11,10 @@ package graph;
 public class DerivedNode extends Node {
     
   public DerivedNode(int id, String name){
-  super(id, name);
+	  super(id, name);
+  }
+  
+  public DerivedNode(int id){
+	  super(id);
   }
 }

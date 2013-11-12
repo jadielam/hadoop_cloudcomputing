@@ -15,10 +15,10 @@ public class AttackGraph {
     HashSet<PrimitiveNode> Np;
     HashSet<DerivedNode> Nd;
     HashSet<Edge> E;
-    HashSet<LFunction> Lf;
-    HashSet<Goal> G;
+    LFunction Lf;
+    Goal G;
 
-    public AttackGraph(HashSet<DerivationNode> Nr, HashSet<PrimitiveNode> Np, HashSet<DerivedNode> Nd, HashSet<Edge> E, HashSet<LFunction> Lf, HashSet<Goal> G) {
+    public AttackGraph(HashSet<DerivationNode> Nr, HashSet<PrimitiveNode> Np, HashSet<DerivedNode> Nd, HashSet<Edge> E, LFunction Lf, Goal G) {
         this.Nr = Nr;
         this.Np = Np;
         this.Nd = Nd;
@@ -43,11 +43,11 @@ public class AttackGraph {
         return E;
     }
 
-    public HashSet<LFunction> getLf() {
+    public LFunction getLf() {
         return Lf;
     }
 
-    public HashSet<Goal> getG() {
+    public Goal getG() {
         return G;
     }
     

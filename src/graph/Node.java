@@ -19,6 +19,11 @@ public abstract class Node {
         id = cur_id;
         name = cur_name;
     }
+    
+    public Node(int cur_id){
+    	id=cur_id;
+    	name="";
+    }
 
     @Override
     public int hashCode() {

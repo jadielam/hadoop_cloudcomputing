@@ -12,7 +12,12 @@ public class DerivationNode extends Node{
  
   
     public DerivationNode(int id,String name){
-    super(id, name);
+    	super(id, name);
     }
+    
+    public DerivationNode(int id){
+    	super(id);
+    }
+    
     
 }
