@@ -3,6 +3,10 @@ package mapreduce;
 import graph.AttackGraph;
 
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
+import objects.Parser;
+import objects.TraceStep;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -11,6 +15,7 @@ import org.apache.hadoop.mapred.Mapper;
 import org.apache.hadoop.mapred.OutputCollector;
 import org.apache.hadoop.mapred.Reporter;
 
+import algorithm.MapAlgorithm;
 
 public class MapClass extends MapReduceBase implements Mapper<LongWritable, Text, Text, AttackGraph>{
 
@@ -21,13 +26,20 @@ public class MapClass extends MapReduceBase implements Mapper<LongWritable, Text
 			OutputCollector<Text, AttackGraph> output, Reporter arg3)
 			throws IOException {
 		
-		String line=value.toString();
+		String lineTemp=value.toString();
+		String []lines=lineTemp.split("\n");
+		List<String> linesList=new LinkedList<String>();
+		for (String line : lines){
+			linesList.add(line);
+		}
 		
 		//1. Parse lines
+		List<TraceStep> traceSteps=Parser.inputparser(linesList);
 		
 		//2. Create AttackGraph from the parsed elements
-		AttackGraph graph=null;
+		AttackGraph graph=MapAlgorithm.getGraph(traceSteps, null);
 		
+				
 		//3. Collect the attack graph
 		output.collect(word, graph);
 		

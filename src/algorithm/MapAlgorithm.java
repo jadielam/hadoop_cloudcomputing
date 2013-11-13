@@ -15,6 +15,7 @@ import objects.Conjunct;
 import objects.Fact;
 import objects.TraceStep;
 import graph.AttackGraph;
+import objects.Parser;
 
 public class MapAlgorithm {
 
@@ -23,11 +24,12 @@ public class MapAlgorithm {
 		
 	}
 	
-	public static AttackGraph getGraph(HashSet<TraceStep> traceSteps, Goal g){
+	public static AttackGraph getGraph(List<TraceStep> traceSteps, Goal g){
 		AttackGraph toReturn=null;
 		
 		//0. Creating the Builder to be used in the algorithm
 		Builder builder=new Builder();
+		
 		
 		//1. Creating the structures that will make the graph
 		HashSet<DerivationNode> Nr=new HashSet<DerivationNode>();
@@ -35,6 +37,7 @@ public class MapAlgorithm {
 		HashSet<DerivedNode> Nd=new HashSet<DerivedNode>();
 		HashSet<Edge> E=new HashSet<Edge>();
 		LFunction L=new LFunction();
+		
 		
 		//2. For each t in T
 		for (TraceStep t : traceSteps){
