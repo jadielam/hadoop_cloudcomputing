@@ -14,7 +14,18 @@ import org.apache.hadoop.util.Tool;
 
 public class AggregateJob extends Configured implements Tool{
 
-	@Override
+	
+	public static void main(String[] argvs){
+		
+		AggregateJob job=new AggregateJob();
+		try {
+			job.run(argvs);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public int run(String[] argvs) throws Exception {
 		
 		JobConf conf=new JobConf(AggregateJob.class);
