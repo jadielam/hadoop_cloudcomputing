@@ -19,35 +19,56 @@ public class AttackGraphConverter {
         
         StringBuilder attack_graph=new StringBuilder();
         
-         HashMap<Node,Integer> nodes=new HashMap<>();
-       
+         HashMap<DerivedNode,Integer> drnodes=new HashMap<>();
+         HashMap<DerivationNode,Integer> dvrnodes=new HashMap<>();
+         HashMap<PrimitiveNode,Integer> prnodes=new HashMap<>();
+       HashMap<Node,Integer> nodes=new HashMap<>();
         int counter=1;
         
         for(DerivedNode Nd : graph.getNd()){
-        nodes.put(Nd,counter);
-        counter++;
-        }
-        
-        for(PrimitiveNode Np : graph.getNp()){
-        nodes.put(Np,counter);
+        drnodes.put(Nd,counter);
+        nodes.put(Nd, counter);
         counter++;
         }
         
         for(DerivationNode Nr : graph.getNr()){
-        nodes.put(Nr,counter);
+        dvrnodes.put(Nr,counter);
+        nodes.put(Nr, counter);
         counter++;
         }
+        
+        for(PrimitiveNode Np : graph.getNp()){
+        prnodes.put(Np,counter);
+        nodes.put(Np, counter);
+        counter++;
+        }
+        
+        
         
         attack_graph.append("digraph G { ");
         attack_graph.append(System.getProperty("line.separator"));
         
-        for(Entry<Node,Integer> graph_node:nodes.entrySet()){
+        for(Entry<DerivedNode,Integer> graph_node:drnodes.entrySet()){
            //labels and shapes data incomplete
-    attack_graph.append(graph_node.getValue()+" [label="+"\""+"......"+"\""+",shape="+"...."+"]");
+    attack_graph.append(graph_node.getValue()+" [label="+"\""+graph_node.toString()+"\""+",shape=box]");
+    attack_graph.append(System.getProperty("line.separator"));
+    
+    }
+        
+        for(Entry<DerivationNode,Integer> graph_node:dvrnodes.entrySet()){
+           //labels and shapes data incomplete
+    attack_graph.append(graph_node.getValue()+" [label="+"\""+graph_node.toString()+"\""+",shape=diamond]");
     attack_graph.append(System.getProperty("line.separator"));
     
     }
        
+         
+        for(Entry<PrimitiveNode,Integer> graph_node:prnodes.entrySet()){
+           //labels and shapes data incomplete
+    attack_graph.append(graph_node.getValue()+" [label="+"\""+graph_node.toString()+"\""+",shape=ellipse]");
+    attack_graph.append(System.getProperty("line.separator"));
+    
+    }
         
         for(Edge e : graph.getE()){
         attack_graph.append(nodes.get(e.getSource())+" -> "+nodes.get(e.getDestination()));
