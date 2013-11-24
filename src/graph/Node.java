@@ -20,6 +20,8 @@ public abstract class Node {
         this.element=element;
     }
     
+    
+    
 
     @Override
     public int hashCode() {
@@ -45,6 +47,10 @@ public abstract class Node {
  
     public FunctionElement getElement(){
     	return element;
+    }
+    
+    public String toString(){
+    	return element.toString();
     }
         
     

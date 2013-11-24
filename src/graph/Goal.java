@@ -12,7 +12,7 @@ public class Goal {
     
 	Node node;
 	
-	Goal(Node node){
+	public Goal(Node node){
 		this.node=node;
 	}
 	
@@ -31,5 +31,9 @@ public class Goal {
 	    	return true;
 	    }
 	    return false;
+	}
+	
+	public String toString(){
+		return this.node.toString();
 	}
 }

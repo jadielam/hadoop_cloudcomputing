@@ -36,4 +36,7 @@ public class InteractionRule implements FunctionElement {
 		return true;
 	}
 
+	public String toString(){
+		return text;
+	}
 }
