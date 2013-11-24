@@ -50,4 +50,7 @@ public class Constant {
 		return result;
 	  }  
 
+	 public String toString(){
+		 return text;
+	 }
 }

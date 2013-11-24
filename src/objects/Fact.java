@@ -49,6 +49,23 @@ public class Fact implements FunctionElement {
 		} else if (!predicate.equals(other.predicate))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String getText() {
+		// TODO Auto-generated method stub
+		StringBuilder sb=new StringBuilder();
+		sb.append(predicate).append("(");
+		
+		int counter=0;
+		for (Constant c : constants){
+			sb.append(c.toString());
+			counter++;
+			if (counter!=constants.size()){
+				sb.append(", ");
+			}
+		}
+		return sb.toString();
 	}	
 
 }

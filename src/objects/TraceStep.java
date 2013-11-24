@@ -57,6 +57,11 @@ public class TraceStep implements FunctionElement {
 			return false;
 		return true;
 	}
+	@Override
+	public String getText() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }
