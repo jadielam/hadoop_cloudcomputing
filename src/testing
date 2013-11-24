@@ -1,1 +1,3 @@
-//This is a new file, just to test how this works.
+because(6,rule_desc('direct network access',1.0),netAccess('172.19.8.7',tcp,'3389'),[hacl(internet,'172.19.8.7',tcp,'3389'),attackerLocated(internet)])
+because(2,rule_desc('remote exploit of a server program',1.0),execCode('172.19.8.7',someUser),[netAccess('172.19.8.7',tcp,'3389'),networkServiceInfo('172.19.8.7',safari,tcp,'3389',someUser),vulExists('172.19.8.7','CVE-2013-2566',safari,remoteExploit,privEscalation)])
+because(5,rule_desc('multi-hop access',0.5),netAccess('172.19.8.7',tcp,'3389'),[hacl('172.19.8.7','172.19.8.7',tcp,'3389'),advances('172.19.8.7','172.19.8.7'),execCode('172.19.8.7',someUser)])
