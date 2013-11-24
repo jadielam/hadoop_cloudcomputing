@@ -108,10 +108,16 @@ public class Parser {
 	
 	public static void main(String args[])
 	{
-		List<String> inputs=new ArrayList<String>();
-		inputs.add("because(InteractionRule, predicate(cons56tant, const567ant), [fact1(constant3, constant4, constant5), fact2(constant6, constant7), fact3(contant8, constant9)])");
-		inputs.add("because(InteractionRule, predicate(cons56tant, const567ant), [predicate(cons34tant, const34567ant), predicate(cons56tant, const9ant)])");
-		
-		inputparser(inputs);
+	String fileName="/hadoop_cloudcomputing/src/testing";
+	        Path path = Paths.get(fileName);
+	        Scanner scanner = new Scanner(path);
+	        List<String> inputs=new ArrayList<String>(); 
+	        //read file line by line
+	        scanner.useDelimiter(System.getProperty("line.separator"));
+	        while(scanner.hasNext()){
+	        	inputs.add(scanner.next());
+	        }
+	        inputparser(inputs);
+	        scanner.close();
 	}
 }
