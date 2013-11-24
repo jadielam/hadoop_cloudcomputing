@@ -26,11 +26,15 @@ public class GraphTest {
 		Constant c4=new Constant(4, "c4");
 		Constant c5=new Constant(5, "c5");
 		
+		System.out.println(c5.toString());
+		
 		InteractionRule ir1=new InteractionRule("ir1");
 		InteractionRule ir2=new InteractionRule("ir2");
 		InteractionRule ir3=new InteractionRule("ir3");
 		InteractionRule ir4=new InteractionRule("ir4");
 		InteractionRule ir5=new InteractionRule("ir5");
+		
+		System.out.println(ir5.toString());
 		
 		List<Constant> l1=new ArrayList<Constant>();
 		l1.add(c1);
@@ -59,6 +63,7 @@ public class GraphTest {
 		Fact f4=new Fact("f4", l4);
 		Fact f5=new Fact("f5", l5);
 		
+		System.out.println(f5.toString());
 		
 		DerivedNode r1=new DerivedNode(ir1);
 		DerivedNode r2=new DerivedNode(ir2);
@@ -66,11 +71,16 @@ public class GraphTest {
 		DerivedNode r4=new DerivedNode(ir4);
 		DerivedNode r5=new DerivedNode(ir5);
 		
+		System.out.println(r5.toString());
+		
 		DerivationNode n1=new DerivationNode(f1);
 		DerivationNode n2=new DerivationNode(f2);
 		DerivationNode n3=new DerivationNode(f3);
 		PrimitiveNode p1=new PrimitiveNode(f4);
 		PrimitiveNode p2=new PrimitiveNode(f5);
+		
+		System.out.println(n1.toString());
+		System.out.println(p1.toString());
 		
 		Edge e1=new Edge(n1, r1);
 		Edge e2=new Edge(n2, r2);

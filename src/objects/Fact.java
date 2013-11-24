@@ -67,5 +67,22 @@ public class Fact implements FunctionElement {
 		}
 		return sb.toString();
 	}	
+	
+	public String toString(){
+		// TODO Auto-generated method stub
+				StringBuilder sb=new StringBuilder();
+				sb.append(predicate).append("(");
+				
+				int counter=0;
+				for (Constant c : constants){
+					sb.append(c.toString());
+					counter++;
+					if (counter!=constants.size()){
+						sb.append(", ");
+					}
+				}
+				sb.append(")");
+				return sb.toString();
+	}
 
 }
