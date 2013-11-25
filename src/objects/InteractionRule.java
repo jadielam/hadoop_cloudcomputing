@@ -6,7 +6,7 @@ import java.io.IOException;
 import org.apache.hadoop.io.Writable;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
-public class InteractionRule implements Writable,FunctionElement {
+public class InteractionRule extends FunctionElement implements Writable {
 	
 	private Text text;
 	

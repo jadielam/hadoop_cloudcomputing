@@ -15,9 +15,8 @@ import org.apache.hadoop.io.Writable;
  *
  * @author Gautham
  */
-public class Goal implements Serializable,Writable {
+public class Goal implements Writable {
     
-	private static final long serialVersionUID= 7526472295622776144L;
 	Node node;
 	
 	public Goal(){

@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import org.apache.hadoop.io.Writable;
 
-public class TraceStep implements Writable,FunctionElement {
+public class TraceStep extends FunctionElement implements Writable {
 	private InteractionRule interactionrule;
 	private Fact fact;
 	private Conjunct conjunct;

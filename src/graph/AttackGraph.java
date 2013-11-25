@@ -55,19 +55,19 @@ public class AttackGraph implements Writable {
     	}
     }
 
-    public HashSet<DerivationNode> getNr() {
+    public MapWritable getNr() {
         return Nr;
     }
 
-    public HashSet<PrimitiveNode> getNp() {
+    public MapWritable getNp() {
         return Np;
     }
 
-    public HashSet<DerivedNode> getNd() {
+    public MapWritable getNd() {
         return Nd;
     }
 
-    public HashSet<Edge> getE() {
+    public MapWritable getE() {
         return E;
     }
 
@@ -80,15 +80,23 @@ public class AttackGraph implements Writable {
     }
 
 	@Override
-	public void readFields(DataInput arg0) throws IOException {
-		// TODO Auto-generated method stub
-		
+	public void readFields(DataInput in) throws IOException {
+		Nr.readFields(in);
+		Np.readFields(in);
+		Nd.readFields(in);
+		E.readFields(in);
+		Lf.readFields(in);
+		G.readFields(in);
 	}
 
 	@Override
-	public void write(DataOutput arg0) throws IOException {
-		// TODO Auto-generated method stub
-		
+	public void write(DataOutput out) throws IOException {
+		Nr.write(out);
+		Np.write(out);
+		Nd.write(out);
+		E.write(out);
+		Lf.write(out);
+		G.write(out);
 	}
     
 

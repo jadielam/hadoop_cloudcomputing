@@ -10,12 +10,14 @@ import org.apache.hadoop.io.Writable;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 
-public class Fact implements Writable, FunctionElement {
+public class Fact extends FunctionElement implements Writable {
 	private Text predicate;
 	private ArrayWritable constants=new ArrayWritable(Constant.class,null);
 	
 	public Fact()
-	{}
+	{
+		
+	}
 	
 	public Fact(String predicate, List<Constant> constants) {
 		this.predicate = new Text(predicate);

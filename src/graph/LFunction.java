@@ -4,12 +4,19 @@
  */
 
 package graph;
-import java.io.Serializable;
+
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
+
+import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.MapWritable;
+import org.apache.hadoop.io.IntWritable;
 
 import objects.*;
 
@@ -18,19 +25,18 @@ import objects.*;
  *
  * @author Gautham
  */
-public class LFunction implements Serializable {
+public class LFunction implements Writable {
 
-	private static final long serialVersionUID= 7526472295622776145L;
 	
-    private HashMap<Node,FunctionElement> LFunction_Map;
-    private HashMap<FunctionElement, List<Node>> InvertedMap;
+	private MapWritable LFunction_Map;
+	private MapWritable InvertedMap;
     
     public LFunction(){
-    	LFunction_Map=new HashMap<Node, FunctionElement>();
-    	InvertedMap=new HashMap<FunctionElement, List<Node>>();
+    	LFunction_Map=new MapWritable();
+    	InvertedMap=new MapWritable();
     }
         
-    public HashMap<Node, FunctionElement> getLFunction_Map() {
+    public MapWritable getLFunction_Map() {
         return LFunction_Map;
     }
     
@@ -38,14 +44,10 @@ public class LFunction implements Serializable {
     	if (!LFunction_Map.containsKey(key)){
     		LFunction_Map.put(key, value);
     	}
-    	if (InvertedMap.containsKey(value)){
-    		InvertedMap.get(value).add(key);
+    	
+    	if (!InvertedMap.containsKey(value)){
+    		InvertedMap.put(value, key);
     		
-    	}
-    	else {
-    		LinkedList<Node> list=new LinkedList<Node>();
-    		list.add(key);
-    		InvertedMap.put(value, list);
     	}
     }
     
@@ -64,26 +66,39 @@ public class LFunction implements Serializable {
     
     public Node getNode(Fact f){
     	if (InvertedMap.containsKey(f)){
-    		List<Node> nodes=InvertedMap.get(f);
-    		
-    		if (!nodes.isEmpty()){
-    			return nodes.get(0);
-    		}
+    		return (Node)InvertedMap.get(f);
     	}
     	return null;
     }
     
     public void addAll(LFunction lf){
     	if (lf!=null){
-    		Set<Entry<Node, FunctionElement>> entries=lf.LFunction_Map.entrySet();
-        	for (Entry<Node, FunctionElement> e : entries){
-        		Node n=e.getKey();
-        		FunctionElement fe=e.getValue();
+    		
+    		Set<Entry<Writable, Writable>> entries=lf.LFunction_Map.entrySet();
+        	for (Entry<Writable, Writable> e : entries){
+        		Node n=(Node)e.getKey();
+        		FunctionElement fe=(FunctionElement)e.getValue();
         		if (!this.LFunction_Map.containsKey(n)){
         			this.LFunction_Map.put(n, fe);
         		}
         		
         	}
     	}
-    }   
+    }
+
+	@Override
+	public void readFields(DataInput in) throws IOException {
+		LFunction_Map.readFields(in);
+		InvertedMap.readFields(in);
+		
+	}
+
+	@Override
+	public void write(DataOutput out) throws IOException {
+		LFunction_Map.write(out);
+		InvertedMap.write(out);
+		
+	}
+   
+    
 }

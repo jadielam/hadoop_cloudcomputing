@@ -2,7 +2,7 @@ package objects;
 
 import org.apache.hadoop.io.Writable;
 
-public interface FunctionElement extends Writable {
+public abstract class FunctionElement implements Writable {
 
-	public String getText();
+	public abstract String getText();
 }
