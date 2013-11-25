@@ -30,7 +30,7 @@ public class ReduceAlgorithm {
 		MapWritable EFinal=new MapWritable();
 		
 		LFunction LFinal=new LFunction();
-		Goal goalFinal=null;
+		Goal goalFinal=new Goal();
 		
 		//Do the reduction here.
 		for (AttackGraph graph : graphsToReduce){

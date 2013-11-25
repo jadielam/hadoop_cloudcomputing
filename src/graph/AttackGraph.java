@@ -96,12 +96,19 @@ public class AttackGraph implements Writable {
 
 	@Override
 	public void readFields(DataInput in) throws IOException {
+		
+		try{
 		Nr.readFields(in);
+		
 		Np.readFields(in);
 		Nd.readFields(in);
 		E.readFields(in);
 		Lf.readFields(in);
 		G.readFields(in);
+		}
+		catch(Exception e){
+			System.out.print("Exception stopped in try-catch");
+		}
 	}
 
 	@Override
