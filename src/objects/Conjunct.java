@@ -16,8 +16,9 @@ public class Conjunct implements Writable{
 	public Conjunct(){
 		this.facts=new ArrayWritable(Fact.class);
 	}
+	
 	public Conjunct(List<Fact> facts) {
-		super();
+		
 		
 		Fact[] temp=new Fact[facts.size()];
 		
