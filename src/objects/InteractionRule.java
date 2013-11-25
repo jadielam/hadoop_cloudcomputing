@@ -1,20 +1,30 @@
 package objects;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 
-import java.io.Serializable;
-
-public class InteractionRule implements Serializable, FunctionElement {
+import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+public class InteractionRule implements Writable,FunctionElement {
 	
-	private static final long serialVersionUID= 7526472295622776153L;
-	
-	private String text;
+	private Text text;
 	
 	public InteractionRule(String text) {
-		this.text = text;
+		this.text = new Text(text);
 	}
-	public String getText() {
+	public Text getText() {
 		return text;
 	}
+	public void write(DataOutput out) throws IOException{
+        text.write(out);
+       
+}
 
+public void readFields(DataInput in) throws IOException {
+       text.readFields(in);
+        
+}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -40,7 +50,4 @@ public class InteractionRule implements Serializable, FunctionElement {
 		return true;
 	}
 
-	public String toString(){
-		return text;
-	}
 }
