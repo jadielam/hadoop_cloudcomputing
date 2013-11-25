@@ -20,8 +20,10 @@ public class Fact extends FunctionElement implements Writable {
 	
 	public Fact()
 	{
-		
+		this.predicate=new Text("");
+		this.constants=new ArrayWritable(Constant.class);
 	}
+	
 	
 	public Fact(String predicate, List<Constant> constants) {
 		this.predicate = new Text(predicate);

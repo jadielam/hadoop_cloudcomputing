@@ -13,6 +13,11 @@ public class TraceStep extends FunctionElement implements Writable {
 	private Fact fact;
 	private Conjunct conjunct;
 	
+	public TraceStep(){
+		this.interactionrule=new InteractionRule();
+		this.fact=new Fact();
+		this.conjunct=new Conjunct();
+	}
 	public TraceStep(InteractionRule interactionrule, Fact fact,
 			Conjunct conjunct) {
 		this.interactionrule = interactionrule;
@@ -76,10 +81,6 @@ public class TraceStep extends FunctionElement implements Writable {
 	public void write(DataOutput out) throws IOException {
 		interactionrule.write(out);
 		fact.write(out);
-		conjunct.write(out);
-		
+		conjunct.write(out);	
 	}
-	
-	
-
 }

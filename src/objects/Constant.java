@@ -11,8 +11,12 @@ public class Constant implements Writable {
         
         private IntWritable id;
         private Text text;
+        
         public Constant()
-        {}
+        {
+        	this.id=new IntWritable(1);
+        	this.text=new Text("");
+        }
         
         public Constant(int id, String text) {
                 this.id = new IntWritable(id);

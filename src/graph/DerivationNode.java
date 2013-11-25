@@ -12,9 +12,9 @@ import objects.FunctionElement;
  *
  * @author Gautham
  */
-public class DerivationNode extends Node implements Serializable {
+public class DerivationNode extends Node implements Writable  {
  
-	private static final long serialVersionUID= 7526472295622776141L;
+	
 	
 	public DerivationNode(){
 		super();
