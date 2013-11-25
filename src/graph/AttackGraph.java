@@ -59,6 +59,8 @@ public class AttackGraph implements Writable {
     }
     
     private void initialize(MapWritable map, HashSet<? extends Writable> set){
+    	
+    	map=new MapWritable();
     	for (Writable a : set){
     		map.put(a, new IntWritable(1));
     	}
