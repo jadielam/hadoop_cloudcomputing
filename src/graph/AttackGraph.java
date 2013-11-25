@@ -10,40 +10,49 @@ import java.io.DataOutput;
 import java.io.IOException;
 import java.io.Serializable;
 import org.apache.hadoop.io.Writable;
-
+import org.apache.hadoop.io.MapWritable;
+import org.apache.hadoop.io.IntWritable;
 /**
  *
  * @author Gautham
  */
 public class AttackGraph implements Writable {
    
-	private static final long serialVersionUID=7526472295622776147L; 
+	 
 	
-	HashSet<DerivationNode> Nr;
-    HashSet<PrimitiveNode> Np;
-    HashSet<DerivedNode> Nd;
-    HashSet<Edge> E;
+	MapWritable Nr;
+    MapWritable Np;
+    MapWritable Nd;
+    MapWritable E;
     LFunction Lf;
     Goal G;
 
     public AttackGraph(){
-    	this.Nr=new HashSet<DerivationNode>();
-    	this.Np=new HashSet<PrimitiveNode>();
-    	this.Nd=new HashSet<DerivedNode>();
-    	this.E=new HashSet<Edge>();
+    	this.Nr=new MapWritable();
+    	this.Np=new MapWritable();
+    	this.Nd=new MapWritable();
+    	this.E=new MapWritable();
     	this.Lf=new LFunction();
     	this.G=new Goal();
     	
     }
     public AttackGraph(HashSet<DerivationNode> Nr, HashSet<PrimitiveNode> Np, HashSet<DerivedNode> Nd, HashSet<Edge> E, LFunction Lf, Goal G) {
-        this.Nr = Nr;
-        this.Np = Np;
-        this.Nd = Nd;
-        this.E = E;
+        
+    	initialize(this.Nr, Nr);
+    	initialize(this.Np, Np);
+        initialize(this.Nd, Nd);
+        initialize(this.E, E);
+        
         this.Lf = Lf;
         this.G = G;
         
         
+    }
+    
+    private void initialize(MapWritable map, HashSet<? extends Writable> set){
+    	for (Writable a : set){
+    		map.put(a, new IntWritable(1));
+    	}
     }
 
     public HashSet<DerivationNode> getNr() {
