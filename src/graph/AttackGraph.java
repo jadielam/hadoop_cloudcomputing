@@ -121,18 +121,9 @@ public class AttackGraph implements Writable {
 		catch(Exception e){
 			e.printStackTrace();
 		}
-		try{
 		Lf.readFields(in);
-		}
-		catch(Exception e){
-			e.printStackTrace();
-		}
-		try{
+		
 		G.readFields(in);
-		}
-		catch(Exception e){
-			e.printStackTrace();
-		}
 		
 	}
 
