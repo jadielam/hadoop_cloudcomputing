@@ -58,7 +58,7 @@ public class AttackGraph implements Writable {
         initialize(this.E, E);
         
         this.Lf = Lf;
-        this.G = G;
+        this.G = new Goal();
         
         
     }

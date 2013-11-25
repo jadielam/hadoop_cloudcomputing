@@ -20,7 +20,7 @@ public class Goal implements Writable {
 	Node node;
 	
 	public Goal(){
-		this.node=null;
+		this.node=new Node();
 	}
 	public Goal(Node node){
 		this.node=node;

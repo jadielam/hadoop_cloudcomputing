@@ -12,6 +12,7 @@ import java.util.Objects;
 import org.apache.hadoop.io.Writable;
 
 import objects.FunctionElement;
+import objects.InteractionRule;
 
 /**
  *
@@ -20,7 +21,10 @@ import objects.FunctionElement;
 public abstract class Node implements Writable {
 	
 	private FunctionElement element;
-	
+
+	public Node(){
+		this.element=new InteractionRule();
+	}
     public Node(FunctionElement element) {
         this.element=element;
     }
