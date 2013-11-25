@@ -15,6 +15,10 @@ import objects.FunctionElement;
 public class DerivedNode extends Node implements Writable {
     
 		
+  public DerivedNode(){
+	  super();
+  }
+  
   public DerivedNode(FunctionElement element){
 	  super(element);
   }

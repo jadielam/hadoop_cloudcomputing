@@ -59,6 +59,10 @@ public class Edge implements Writable {
     }
 
     
+    public Edge(){
+    	source=null;
+    	destination=null;
+    }
     public Edge(Node src, Node dest){
     
     	source=src;

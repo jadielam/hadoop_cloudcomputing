@@ -15,7 +15,11 @@ import objects.FunctionElement;
 public class DerivationNode extends Node implements Serializable {
  
 	private static final long serialVersionUID= 7526472295622776141L;
-  
+	
+	public DerivationNode(){
+		super();
+	}
+	
     public DerivationNode(FunctionElement element){
     	super(element);
     }
