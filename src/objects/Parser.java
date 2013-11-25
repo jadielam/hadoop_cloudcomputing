@@ -1,5 +1,7 @@
 package objects;
-
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -54,8 +56,6 @@ public class Parser {
         InteractionRule i=new InteractionRule(interactionrule);
         TraceStep tracestep=new TraceStep(i,f,c);
         
-       
-        System.out.println(text);
         System.out.println(interactionrule);
         System.out.println(fact);
         System.out.println(conjunct);
@@ -108,7 +108,7 @@ public class Parser {
     	return fact1;
 	}
 	
-	public static void main(String args[])
+	public static void main(String args[]) throws IOException
 	{
 	String fileName="/hadoop_cloudcomputing/src/testing";
 	        Path path = Path.get(fileName);
