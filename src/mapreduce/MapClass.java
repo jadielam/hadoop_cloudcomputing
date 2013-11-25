@@ -37,8 +37,7 @@ public class MapClass extends MapReduceBase implements Mapper<LongWritable, Text
 		AttackGraph graph=MapAlgorithm.getGraph(traceSteps, null);
 		
 		//3. Collect the attack graph
-		output.collect(word, graph);
+		output.collect(new LongWritable(1), graph);
 		
 	}
-	
 }
