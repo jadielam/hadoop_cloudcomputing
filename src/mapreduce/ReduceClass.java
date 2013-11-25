@@ -27,13 +27,15 @@ public class ReduceClass extends MapReduceBase implements Reducer<Text, AttackGr
 			graphs.add(values.next());
 		}
 		
+		System.out.println("REDUCER::::::::  Got here0");
 		ReduceAlgorithm reducer=new ReduceAlgorithm(graphs);
 		AttackGraph reducedGraph=reducer.reduce();
+		System.out.println("REDUCER::::::::  Got here1");
 		AttackGraphConverter converter=new AttackGraphConverter();
 		converter.ConvertToGraph(reducedGraph);
+		System.out.println("REDUCER::::::::  Got here2");
 		output.collect(key,  reducedGraph);
 		
 	}
 
 }
-
