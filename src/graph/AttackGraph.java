@@ -99,16 +99,41 @@ public class AttackGraph implements Writable {
 		
 		try{
 		Nr.readFields(in);
-		
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		try{
 		Np.readFields(in);
+		}
+		catch (Exception e){
+			e.printStackTrace();
+		}
+		try{
 		Nd.readFields(in);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		try{
 		E.readFields(in);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		try{
 		Lf.readFields(in);
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		try{
 		G.readFields(in);
 		}
 		catch(Exception e){
-			System.out.print("Exception stopped in try-catch");
+			e.printStackTrace();
 		}
+		
 	}
 
 	@Override
