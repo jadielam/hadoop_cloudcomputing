@@ -17,7 +17,7 @@ import objects.InteractionRule;
  *
  * @author Gautham
  */
-public abstract class Node implements Writable {
+public class Node implements Writable {
 	
 	private FunctionElement element;
 
