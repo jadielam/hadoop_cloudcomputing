@@ -4,12 +4,15 @@
  */
 package graph;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Gautham
  */
-public class Edge {
-    
+public class Edge implements Serializable {
+	
+	private static final long serialVersionUID= 7526472295622776143L;
     
    private Node source;
    private Node destination;

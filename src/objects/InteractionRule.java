@@ -1,6 +1,10 @@
 package objects;
 
-public class InteractionRule implements FunctionElement {
+import java.io.Serializable;
+
+public class InteractionRule implements Serializable, FunctionElement {
+	
+	private static final long serialVersionUID= 7526472295622776153L;
 	
 	private String text;
 	

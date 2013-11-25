@@ -1,6 +1,11 @@
 package objects;
 
-public class TraceStep implements FunctionElement {
+import java.io.Serializable;
+
+public class TraceStep implements Serializable, FunctionElement {
+	
+	private static final long serialVersionUID= 7526472295622776154L;
+	
 	private InteractionRule interactionrule;
 	private Fact fact;
 	private Conjunct conjunct;

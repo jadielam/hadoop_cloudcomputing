@@ -5,13 +5,18 @@
 package graph;
 
 import java.util.HashSet;
+import java.io.IOException;
+import java.io.Serializable;
 
 /**
  *
  * @author Gautham
  */
-public class AttackGraph {
-    HashSet<DerivationNode> Nr;
+public class AttackGraph implements Serializable {
+   
+	private static final long serialVersionUID=7526472295622776147L; 
+	
+	HashSet<DerivationNode> Nr;
     HashSet<PrimitiveNode> Np;
     HashSet<DerivedNode> Nd;
     HashSet<Edge> E;
@@ -51,6 +56,5 @@ public class AttackGraph {
         return G;
     }
     
-    
-    
+
 }

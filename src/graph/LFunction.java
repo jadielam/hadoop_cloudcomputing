@@ -4,6 +4,7 @@
  */
 
 package graph;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,8 +18,10 @@ import objects.*;
  *
  * @author Gautham
  */
-public class LFunction {
+public class LFunction implements Serializable {
 
+	private static final long serialVersionUID= 7526472295622776145L;
+	
     private HashMap<Node,FunctionElement> LFunction_Map;
     private HashMap<FunctionElement, List<Node>> InvertedMap;
     

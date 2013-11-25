@@ -1,8 +1,11 @@
 package objects;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Fact implements FunctionElement {
+public class Fact implements Serializable, FunctionElement {
+	
+	private static final long serialVersionUID= 7526472295622776152L;
 	private String predicate;
 	private List<Constant> constants;
 	

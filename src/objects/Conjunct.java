@@ -1,8 +1,11 @@
 package objects;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Conjunct {
+public class Conjunct implements Serializable {
+	
+	private static final long serialVersionUID= 7526472295622776150L;
 	
 	private List<Fact> facts;
 

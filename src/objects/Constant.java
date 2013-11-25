@@ -1,6 +1,11 @@
 package objects;
 
-public class Constant {
+import java.io.Serializable;
+
+public class Constant implements Serializable {
+	
+	private static final long serialVersionUID= 7526472295622776149L;
+	
 	private int id;
 	private String text;
 	

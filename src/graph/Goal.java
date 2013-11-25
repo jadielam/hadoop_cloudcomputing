@@ -4,12 +4,15 @@
  */
 package graph;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Gautham
  */
-public class Goal {
+public class Goal implements Serializable {
     
+	private static final long serialVersionUID= 7526472295622776144L;
 	Node node;
 	
 	public Goal(Node node){
