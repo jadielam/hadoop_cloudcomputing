@@ -11,7 +11,7 @@ import org.apache.hadoop.io.Writable;
 public class Conjunct implements Writable{
 	
 	
-	private ArrayWritable facts=new ArrayWritable(Fact.class,null);
+	private ArrayWritable facts=new ArrayWritable(Fact.class);
 
 	public Conjunct(List<Fact> facts) {
 		super();
