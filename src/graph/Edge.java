@@ -15,7 +15,7 @@ import org.apache.hadoop.io.Writable;
  *
  * @author Gautham
  */
-public class Edge implements Writable {
+public class Edge  {
 	
 	
     
@@ -73,20 +73,5 @@ public class Edge implements Writable {
     public String toString(){
     	return source+" -> "+destination;
     }
-	@Override
-	public void readFields(DataInput in) throws IOException {
-		// TODO Auto-generated method stub
-		source.readFields(in);
-		destination.readFields(in);
-		
-	}
-
-	@Override
-	public void write(DataOutput out) throws IOException {
-		// TODO Auto-generated method stub
-		source.write(out);
-		destination.write(out);
-		
-	}
     
 }

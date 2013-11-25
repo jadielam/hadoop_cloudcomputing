@@ -72,7 +72,7 @@ public class MapAlgorithm {
 			{
 				
 				Node c=L.getNode(f);
-				if (c!=null){
+				if (c==null){
 					
 					if (builder.isPrimitive(f)){
 						c=builder.getPrimitiveNode(f);
