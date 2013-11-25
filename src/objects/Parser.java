@@ -111,7 +111,7 @@ public class Parser {
 	public static void main(String args[]) throws IOException
 	{
 	String fileName="/hadoop_cloudcomputing/src/testing";
-	        Path path = Path.get(fileName);
+	        Path path = Paths.get(fileName);
 	        Scanner scanner = new Scanner(path);
 	        List<String> inputs=new ArrayList<String>(); 
 	        //read file line by line
