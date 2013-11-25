@@ -18,14 +18,13 @@ import org.apache.hadoop.io.IntWritable;
  */
 public class AttackGraph implements Writable {
    
-	 
-	
-	MapWritable Nr;
-    MapWritable Np;
-    MapWritable Nd;
-    MapWritable E;
-    LFunction Lf;
-    Goal G;
+	 	
+	MapWritable Nr=new MapWritable();
+    MapWritable Np=new MapWritable();
+    MapWritable Nd=new MapWritable();
+    MapWritable E=new MapWritable();
+    LFunction Lf=new LFunction();
+    Goal G=new Goal();
 
     public AttackGraph(){
     	this.Nr=new MapWritable();
@@ -45,8 +44,14 @@ public class AttackGraph implements Writable {
     	this.Lf=Lf;
     	this.G=G;
     }
+    
     public AttackGraph(HashSet<DerivationNode> Nr, HashSet<PrimitiveNode> Np, HashSet<DerivedNode> Nd, HashSet<Edge> E, LFunction Lf, Goal G) {
         
+    	this.Nr=new MapWritable();
+    	this.Np=new MapWritable();
+    	this.Nd=new MapWritable();
+    	this.E=new MapWritable();
+    	
     	initialize(this.Nr, Nr);
     	initialize(this.Np, Np);
         initialize(this.Nd, Nd);
@@ -60,7 +65,7 @@ public class AttackGraph implements Writable {
     
     private void initialize(MapWritable map, HashSet<? extends Writable> set){
     	
-    	map=new MapWritable();
+    	
     	for (Writable a : set){
     		map.put(a, new IntWritable(1));
     	}
