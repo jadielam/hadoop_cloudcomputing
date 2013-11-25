@@ -1,26 +1,47 @@
 package objects;
 
-import java.io.Serializable;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 import java.util.List;
 
-public class Fact implements Serializable, FunctionElement {
+import org.apache.hadoop.io.ArrayWritable;
+import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
+
+public class Fact implements Writable, FunctionElement {
+	private Text predicate;
+	private ArrayWritable constants;
 	
-	private static final long serialVersionUID= 7526472295622776152L;
-	private String predicate;
-	private List<Constant> constants;
+	public Fact()
+	{}
 	
 	public Fact(String predicate, List<Constant> constants) {
-		this.predicate = predicate;
-		this.constants = constants;
+		this.predicate = new Text(predicate);
+		for(Constant c:constants)
+		{
+		constants.add(c);
+		}
 	}
 	
-	public String getPredicate() {
+	public Text getPredicate() {
 		return predicate;
 	}
 	
-	public List<Constant> getConstants() {
+	public ArrayWritable getConstants() {
 		return constants;
 	}
+	
+	public void write(DataOutput out) throws IOException{
+        predicate.write(out);
+        constants.write(out);
+}
+
+public void readFields(DataInput in) throws IOException {
+        predicate.readFields(in);
+        constants.readFields(in);
+}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -52,40 +73,6 @@ public class Fact implements Serializable, FunctionElement {
 		} else if (!predicate.equals(other.predicate))
 			return false;
 		return true;
-	}
-
-	@Override
-	public String getText() {
-		// TODO Auto-generated method stub
-		StringBuilder sb=new StringBuilder();
-		sb.append(predicate).append("(");
-		
-		int counter=0;
-		for (Constant c : constants){
-			sb.append(c.toString());
-			counter++;
-			if (counter!=constants.size()){
-				sb.append(", ");
-			}
-		}
-		return sb.toString();
 	}	
-	
-	public String toString(){
-		// TODO Auto-generated method stub
-				StringBuilder sb=new StringBuilder();
-				sb.append(predicate).append("(");
-				
-				int counter=0;
-				for (Constant c : constants){
-					sb.append(c.toString());
-					counter++;
-					if (counter!=constants.size()){
-						sb.append(", ");
-					}
-				}
-				sb.append(")");
-				return sb.toString();
-	}
 
 }
