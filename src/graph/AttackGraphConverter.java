@@ -15,7 +15,7 @@ import java.util.Map.Entry;
 
 public class AttackGraphConverter {
     
-    public StringBuilder ConvertToGraph(AttackGraph graph){
+    public String ConvertToGraph(AttackGraph graph){
         
         StringBuilder attack_graph=new StringBuilder();
         
@@ -79,7 +79,7 @@ public class AttackGraphConverter {
         
         
         
-        return attack_graph;
+        return attack_graph.toString();
     
     
     }

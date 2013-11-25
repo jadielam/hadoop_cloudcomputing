@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import graph.AttackGraph;
+import graph.AttackGraphConverter;
 import algorithm.ReduceAlgorithm;
 
 import org.apache.hadoop.io.Text;
@@ -28,6 +29,8 @@ public class ReduceClass extends MapReduceBase implements Reducer<Text, AttackGr
 		
 		ReduceAlgorithm reducer=new ReduceAlgorithm(graphs);
 		AttackGraph reducedGraph=reducer.reduce();
+		AttackGraphConverter converter=new AttackGraphConverter();
+		converter.ConvertToGraph(reducedGraph);
 		output.collect(key,  reducedGraph);
 		
 	}
