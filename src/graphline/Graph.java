@@ -107,7 +107,7 @@ public class Graph implements Writable{
 	
 	public String toString(){
 		AttackGraphConverter converter=new AttackGraphConverter();
-		return converter.ConvertToGraph1(this);
+		return converter.ConvertToGraph(this);
 		
 	}
 }
