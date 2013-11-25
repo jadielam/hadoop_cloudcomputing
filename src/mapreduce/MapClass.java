@@ -27,11 +27,8 @@ public class MapClass extends MapReduceBase implements Mapper<LongWritable, Text
 			throws IOException {
 		
 		String lineTemp=value.toString();
-		String []lines=lineTemp.split("\n");
 		List<String> linesList=new LinkedList<String>();
-		for (String line : lines){
-			linesList.add(line);
-		}
+		linesList.add(lineTemp);
 		
 		//1. Parse lines
 		List<TraceStep> traceSteps=Parser.inputparser(linesList);
