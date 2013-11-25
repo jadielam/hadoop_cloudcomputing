@@ -2,6 +2,8 @@ package union;
 
 import graph.AttackGraph;
 
+
+
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.Text;
@@ -17,7 +19,7 @@ public class AggregateJob2 extends Configured implements Tool{
 	
 	public static void main(String[] argvs){
 		
-		AggregateJob job=new AggregateJob();
+		AggregateJob2 job=new AggregateJob2();
 		try {
 			job.run(argvs);
 		} catch (Exception e) {

@@ -19,10 +19,10 @@ public class AttackGraphConverter {
         
         StringBuilder attack_graph=new StringBuilder();
         
-         HashMap<DerivedNode,Integer> drnodes=new HashMap<>();
-         HashMap<DerivationNode,Integer> dvrnodes=new HashMap<>();
-         HashMap<PrimitiveNode,Integer> prnodes=new HashMap<>();
-       HashMap<Node,Integer> nodes=new HashMap<>();
+         HashMap<DerivedNode, Integer> drnodes=new HashMap<DerivedNode, Integer>();
+         HashMap<DerivationNode, Integer> dvrnodes=new HashMap<DerivationNode, Integer>();
+         HashMap<PrimitiveNode, Integer> prnodes=new HashMap<PrimitiveNode, Integer>();
+         HashMap<Node,Integer> nodes=new HashMap<Node, Integer>();
         int counter=1;
         
         for(DerivedNode Nd : graph.getNd()){
