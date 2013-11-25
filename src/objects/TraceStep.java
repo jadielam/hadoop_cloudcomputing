@@ -4,7 +4,9 @@ import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
+import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.Writable;
+
 
 public class TraceStep extends FunctionElement implements Writable {
 	private InteractionRule interactionrule;
@@ -77,6 +79,7 @@ public class TraceStep extends FunctionElement implements Writable {
 		conjunct.write(out);
 		
 	}
+	
 	
 
 }

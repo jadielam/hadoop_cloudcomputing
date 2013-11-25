@@ -11,6 +11,10 @@
 package graph;
 import java.util.HashMap;
 import java.util.Map.Entry;
+import java.util.Set;
+
+import org.apache.hadoop.io.MapWritable;
+import org.apache.hadoop.io.Writable;
 
 
 public class AttackGraphConverter {
@@ -25,21 +29,30 @@ public class AttackGraphConverter {
          HashMap<Node,Integer> nodes=new HashMap<Node, Integer>();
         int counter=1;
         
-        for(DerivedNode Nd : graph.getNd()){
-        drnodes.put(Nd,counter);
-        nodes.put(Nd, counter);
+        MapWritable Nd=graph.getNd();
+        Set<Entry<Writable, Writable>> entries=Nd.entrySet();
+                
+        for(Entry e: entries){
+        	drnodes.put((DerivedNode)e.getKey(),counter);
+        	nodes.put((DerivedNode)e.getKey(), counter);
         counter++;
         }
         
-        for(DerivationNode Nr : graph.getNr()){
-        dvrnodes.put(Nr,counter);
-        nodes.put(Nr, counter);
+        MapWritable Nr=graph.getNr();
+        Set<Entry<Writable, Writable>> entries1=Nr.entrySet();
+        
+        for(Entry e : entries1){
+        dvrnodes.put((DerivationNode)e.getKey(),counter);
+        nodes.put((DerivationNode)e.getKey(), counter);
         counter++;
         }
         
-        for(PrimitiveNode Np : graph.getNp()){
-        prnodes.put(Np,counter);
-        nodes.put(Np, counter);
+        MapWritable Np=graph.getNp();
+        Set<Entry<Writable, Writable>> entries2=Nr.entrySet();
+        
+        for(Entry  e : entries2){
+        prnodes.put((PrimitiveNode)e.getKey(),counter);
+        nodes.put((PrimitiveNode)e.getKey(), counter);
         counter++;
         }
         
@@ -70,9 +83,12 @@ public class AttackGraphConverter {
     
     }
         
-        for(Edge e : graph.getE()){
-        attack_graph.append(nodes.get(e.getSource())+" -> "+nodes.get(e.getDestination()));
-        attack_graph.append(System.getProperty("line.separator"));
+        
+        MapWritable E=graph.getE();
+        Set<Entry<Writable, Writable>> entries3=E.entrySet();
+        for(Entry e : entries3){
+        	attack_graph.append(nodes.get((Edge)e.getKey())+" -> "+nodes.get((Edge)e.getKey()));
+        	attack_graph.append(System.getProperty("line.separator"));
         }
         
         attack_graph.append(" }");
@@ -83,5 +99,4 @@ public class AttackGraphConverter {
     
     
     }
-    
 }
