@@ -17,6 +17,11 @@ import objects.FunctionElement;
 public class PrimitiveNode extends Node implements Serializable,Writable {
   
 	private static final long serialVersionUID= 7526472295622776147L;
+
+
+	public PrimitiveNode(){
+		super();
+	}
 	
   public PrimitiveNode(FunctionElement element){
 	  super(element);
