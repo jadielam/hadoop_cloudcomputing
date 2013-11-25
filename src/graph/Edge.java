@@ -4,13 +4,18 @@
  */
 package graph;
 
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 import java.io.Serializable;
+
+import org.apache.hadoop.io.Writable;
 
 /**
  *
  * @author Gautham
  */
-public class Edge implements Serializable {
+public class Edge implements Serializable,Writable {
 	
 	private static final long serialVersionUID= 7526472295622776143L;
     
@@ -60,5 +65,21 @@ public class Edge implements Serializable {
     	destination=dest;
     
     }
+
+	@Override
+	public void readFields(DataInput in) throws IOException {
+		// TODO Auto-generated method stub
+		source.readFields(in);
+		destination.readFields(in);
+		
+	}
+
+	@Override
+	public void write(DataOutput out) throws IOException {
+		// TODO Auto-generated method stub
+		source.write(out);
+		destination.write(out);
+		
+	}
     
 }

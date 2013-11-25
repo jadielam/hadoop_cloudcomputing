@@ -4,13 +4,15 @@
  */
 package graph;
 
+import org.apache.hadoop.io.Writable;
+
 import objects.FunctionElement;
 
 /**
  *
  * @author Gautham
  */
-public class DerivedNode extends Node {
+public class DerivedNode extends Node implements Writable {
     
 		
   public DerivedNode(FunctionElement element){

@@ -4,7 +4,12 @@
  */
 package graph;
 
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 import java.util.Objects;
+
+import org.apache.hadoop.io.Writable;
 
 import objects.FunctionElement;
 
@@ -12,7 +17,7 @@ import objects.FunctionElement;
  *
  * @author Gautham
  */
-public abstract class Node {
+public abstract class Node implements Writable {
 	
 	private FunctionElement element;
 	
@@ -52,6 +57,16 @@ public abstract class Node {
     public String toString(){
     	return element.toString();
     }
+    
+    public void write(DataOutput out) throws IOException{
+        
+        element.write(out);
+}
+
+public void readFields(DataInput in) throws IOException {
+       
+        element.readFields(in);
+}
     
 }
 

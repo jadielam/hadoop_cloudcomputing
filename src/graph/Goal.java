@@ -4,13 +4,18 @@
  */
 package graph;
 
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 import java.io.Serializable;
+
+import org.apache.hadoop.io.Writable;
 
 /**
  *
  * @author Gautham
  */
-public class Goal implements Serializable {
+public class Goal implements Serializable,Writable {
     
 	private static final long serialVersionUID= 7526472295622776144L;
 	Node node;
@@ -41,5 +46,16 @@ public class Goal implements Serializable {
 	
 	public String toString(){
 		return this.node.toString();
+	}
+	@Override
+	public void readFields(DataInput in) throws IOException {
+		// TODO Auto-generated method stub
+		node.readFields(in);
+		
+	}
+	@Override
+	public void write(DataOutput out) throws IOException {
+		// TODO Auto-generated method stub
+		node.write(out);
 	}
 }
