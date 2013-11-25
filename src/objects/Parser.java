@@ -54,15 +54,12 @@ public class Parser {
         InteractionRule i=new InteractionRule(interactionrule);
         TraceStep tracestep=new TraceStep(i,f,c);
         
-       // System.out.println(Arrays.toString(result));
+       
         System.out.println(text);
         System.out.println(interactionrule);
         System.out.println(fact);
         System.out.println(conjunct);
-        //System.out.println(predicate);
-       // System.out.println(constantlist);
-        //System.out.println(fc);
-        //System.out.println(fact21);
+        
         return tracestep;
       
 	}
@@ -101,11 +98,7 @@ public class Parser {
     
     	for (String constant:constants)
     	{
-    		
-    		/*Pattern p0=Pattern.compile("\\[(.*)\\]");
-    		m = p0.matcher(constant);
-            m.find();
-            constant = m.group(1);*/
+    	
             System.out.println(constant);
             Constant c=new Constant(1,constant);
             constantlist1.add(c);	
