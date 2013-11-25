@@ -7,7 +7,7 @@ package graph;
 import java.io.Serializable;
 
 import objects.FunctionElement;
-
+import org.apache.hadoop.io.Writable;
 /**
  *
  * @author Gautham
