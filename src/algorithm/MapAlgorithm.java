@@ -65,16 +65,14 @@ public class MapAlgorithm {
 			
 			//7. For each fact f in Conjunct
 			Conjunct conjunct=t.getConjunct();
-			//List<Fact> facts=conjunct.getFacts();
-			ArrayWritable facts=conjunct.getFacts();
+			List<Fact> facts=conjunct.getFacts();
 			
-			Fact[] tempFacts=(Fact[])facts.get();
 			
-			for (int i=0; i<tempFacts.length; i++)
+			for (Fact f : facts)
 			{
-				Fact f=tempFacts[i];
+				
 				Node c=L.getNode(f);
-				if (c==null){
+				if (c!=null){
 					
 					if (builder.isPrimitive(f)){
 						c=builder.getPrimitiveNode(f);

@@ -7,10 +7,19 @@ import java.io.IOException;
 import org.apache.hadoop.io.Writable;
 
 
-public class TraceStep extends FunctionElement implements Writable {
+public class TraceStep extends FunctionElement{
 	private InteractionRule interactionrule;
 	private Fact fact;
 	private Conjunct conjunct;
+	
+	public String toString(){
+		StringBuilder sb=new StringBuilder();
+		sb.append("[").append(interactionrule.toString()).append(", ");
+		sb.append(fact.toString()).append(", ").append(conjunct.toString());
+		sb.append("]");
+		
+		return sb.toString();
+	}
 	
 	public TraceStep(){
 		this.interactionrule=new InteractionRule();
@@ -68,18 +77,5 @@ public class TraceStep extends FunctionElement implements Writable {
 		} else if (!interactionrule.equals(other.interactionrule))
 			return false;
 		return true;
-	}
-	@Override
-	public void readFields(DataInput in) throws IOException {
-		interactionrule.readFields(in);
-		fact.readFields(in);
-		conjunct.readFields(in);
-		
-	}
-	@Override
-	public void write(DataOutput out) throws IOException {
-		interactionrule.write(out);
-		fact.write(out);
-		conjunct.write(out);	
 	}
 }

@@ -3,49 +3,42 @@ package objects;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.hadoop.io.ArrayWritable;
 import org.apache.hadoop.io.Writable;
 
-public class Conjunct implements Writable{
+public class Conjunct {
 	
+	public String toString(){
+		StringBuilder sb=new StringBuilder();
+		sb.append("(");
+		for (Fact fact : facts){
+			sb.append(fact).append(", ");
+		}
+		sb.append(")");
+		
+		return sb.toString();
+	}
 	
-	private ArrayWritable facts=new ArrayWritable(Fact.class);
+	private List<Fact> facts=new LinkedList<Fact>();
 	
 	public Conjunct(){
-		this.facts=new ArrayWritable(Fact.class);
+		this.facts=new LinkedList<Fact>();
 	}
 	
 	public Conjunct(List<Fact> facts) {
 		
 		
-		Fact[] temp=new Fact[facts.size()];
-		
-		int counter=0;
-		for(Fact f:facts)
-		{
-			temp[counter]=f;
-			counter++;
-		}
-		
-		this.facts.set(temp);
+		this.facts=facts;
 	}
 
-	public ArrayWritable getFacts() {
+	public List<Fact> getFacts() {
 		return facts;
 	}
 	
-	public void write(DataOutput out) throws IOException{
-        facts.write(out);
-       
-}
-
-public void readFields(DataInput in) throws IOException {
-       facts.readFields(in);
-        
-}
-	@Override
+		@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;

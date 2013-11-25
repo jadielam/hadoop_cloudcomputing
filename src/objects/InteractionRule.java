@@ -10,6 +10,10 @@ public class InteractionRule extends FunctionElement implements Writable {
 	
 	private Text text;
 	
+	public String toString(){
+		return text.toString();
+	}
+	
 	public InteractionRule(){
 		this.text=new Text("");
 	}

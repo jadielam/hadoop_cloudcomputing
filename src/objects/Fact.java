@@ -3,6 +3,7 @@ package objects;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.hadoop.io.ArrayWritable;
@@ -11,50 +12,47 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 
 public class Fact extends FunctionElement implements Writable {
+	
 	private Text predicate;
-	private ArrayWritable constants=new ArrayWritable(Constant.class);
+	private List<Constant> constants=new LinkedList<Constant>();
 
+	public String toString(){
+		StringBuilder sb=new StringBuilder("");
+		sb.append(predicate.toString());
+		sb.append("(");
+		for (Constant c : constants){
+			sb.append(c.toString()).append(", ");
+		}
+		sb.append(")");
+		return predicate.toString();
+	}
+	
 	public Text getText(){
 		return predicate;
 	}
 	
+	
 	public Fact()
 	{
 		this.predicate=new Text("");
-		this.constants=new ArrayWritable(Constant.class);
+		this.constants=new LinkedList<Constant>();
 	}
 	
 	
 	public Fact(String predicate, List<Constant> constants) {
 		this.predicate = new Text(predicate);
-		this.constants=new ArrayWritable(Constant.class);
-		Constant[] temp=new Constant[constants.size()];
+		this.constants=constants;
 		
-		int counter=0;
-		for (Constant a : constants){
-			temp[counter]=a;
-			counter++;
-		}
-		this.constants.set(temp);
 	}
 	
 	public Text getPredicate() {
 		return predicate;
 	}
 	
-	public ArrayWritable getConstants() {
+	public List<Constant> getConstants() {
 		return constants;
 	}
 	
-	public void write(DataOutput out) throws IOException{
-        predicate.write(out);
-        constants.write(out);
-}
-
-public void readFields(DataInput in) throws IOException {
-        predicate.readFields(in);
-        constants.readFields(in);
-}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

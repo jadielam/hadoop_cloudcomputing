@@ -30,8 +30,16 @@ public class Builder {
 		return toReturn;
 	}
 	
-	//TODO: This is a stub
+	
 	public boolean isPrimitive(Fact f){
-		return true;
+		String primitive=f.getPredicate().toString();
+		String[] primitives={"inCompetent", "competent", "clientProgram", "vulExists", "vulProperty", "hacl", "attackerLocated", "hasAccount", "networkServiceInfo", "setuidProgramInfo", "nfsExportInfo", "nfsMounted", "localFileProtection", "dependsOn", "installed", "bugHyp", "vulExists", "canAccessFile", "isWebServer"};
+		
+		for (String a : primitives){
+			if (primitive.equalsIgnoreCase(a)){
+				return true;
+			}
+		}
+		return false;
 	}
 }
