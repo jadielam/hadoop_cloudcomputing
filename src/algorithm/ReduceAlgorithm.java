@@ -11,6 +11,7 @@ import graph.Goal;
 import graph.LFunction;
 import graph.Node;
 import graph.PrimitiveNode;
+import org.apache.hadoop.io.MapWritable;
 
 public class ReduceAlgorithm {
 
@@ -23,20 +24,22 @@ public class ReduceAlgorithm {
 	
 	public AttackGraph reduce(){
 		
-		HashSet<DerivationNode> NrFinal=new HashSet<DerivationNode>();
-		HashSet<PrimitiveNode> NpFinal=new HashSet<PrimitiveNode>();
-		HashSet<DerivedNode> NdFinal=new HashSet<DerivedNode>();
-		HashSet<Edge> EFinal=new HashSet<Edge>();
+		MapWritable NrFinal=new MapWritable();
+		MapWritable NpFinal=new MapWritable();
+		MapWritable NdFinal=new MapWritable();
+		MapWritable EFinal=new MapWritable();
+		
 		LFunction LFinal=new LFunction();
 		Goal goalFinal=null;
 		
 		//Do the reduction here.
 		for (AttackGraph graph : graphsToReduce){
 			
-			NrFinal.addAll(graph.getNr());
-			NpFinal.addAll(graph.getNp());
-			NdFinal.addAll(graph.getNd());
-			EFinal.addAll(graph.getE());
+			
+			NrFinal.putAll(graph.getNr());
+			NpFinal.putAll(graph.getNp());
+			NdFinal.putAll(graph.getNd());
+			EFinal.putAll(graph.getE());
 			LFinal.addAll(graph.getLf());
 			reduceGoal(goalFinal, graph.getG());
 		}

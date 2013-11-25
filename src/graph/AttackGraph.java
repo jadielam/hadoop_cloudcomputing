@@ -36,6 +36,15 @@ public class AttackGraph implements Writable {
     	this.G=new Goal();
     	
     }
+    
+    public AttackGraph(MapWritable Nr, MapWritable Np, MapWritable Nd, MapWritable E, LFunction Lf, Goal G){
+    	this.Nr=Nr;
+    	this.Np=Np;
+    	this.Nd=Nd;
+    	this.E=E;
+    	this.Lf=Lf;
+    	this.G=G;
+    }
     public AttackGraph(HashSet<DerivationNode> Nr, HashSet<PrimitiveNode> Np, HashSet<DerivedNode> Nd, HashSet<Edge> E, LFunction Lf, Goal G) {
         
     	initialize(this.Nr, Nr);

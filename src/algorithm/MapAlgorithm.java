@@ -3,6 +3,8 @@ package algorithm;
 import java.util.HashSet;
 import java.util.List;
 
+import org.apache.hadoop.io.ArrayWritable;
+
 import graph.Goal;
 import graph.Node;
 import graph.PrimitiveNode;
@@ -63,8 +65,14 @@ public class MapAlgorithm {
 			
 			//7. For each fact f in Conjunct
 			Conjunct conjunct=t.getConjunct();
-			List<Fact> facts=conjunct.getFacts();
-			for (Fact f : facts){
+			//List<Fact> facts=conjunct.getFacts();
+			ArrayWritable facts=conjunct.getFacts();
+			
+			Fact[] tempFacts=(Fact[])facts.get();
+			
+			for (int i=0; i<tempFacts.length; i++)
+			{
+				Fact f=tempFacts[i];
 				Node c=L.getNode(f);
 				if (c==null){
 					

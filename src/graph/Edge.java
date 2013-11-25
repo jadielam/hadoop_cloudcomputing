@@ -15,9 +15,9 @@ import org.apache.hadoop.io.Writable;
  *
  * @author Gautham
  */
-public class Edge implements Serializable,Writable {
+public class Edge implements Writable {
 	
-	private static final long serialVersionUID= 7526472295622776143L;
+	
     
    private Node source;
    private Node destination;
