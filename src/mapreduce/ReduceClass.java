@@ -14,12 +14,13 @@ import org.apache.hadoop.mapred.MapReduceBase;
 import org.apache.hadoop.mapred.OutputCollector;
 import org.apache.hadoop.mapred.Reducer;
 import org.apache.hadoop.mapred.Reporter;
+import org.apache.hadoop.io.LongWritable;
 
-public class ReduceClass extends MapReduceBase implements Reducer<Text, AttackGraph, Text, AttackGraph>{
+public class ReduceClass extends MapReduceBase implements Reducer<LongWritable, AttackGraph, LongWritable, AttackGraph>{
 
 	@Override
-	public void reduce(Text key, Iterator<AttackGraph> values,
-			OutputCollector<Text, AttackGraph> output, Reporter reporter)
+	public void reduce(LongWritable key, Iterator<AttackGraph> values,
+			OutputCollector<LongWritable, AttackGraph> output, Reporter reporter)
 			throws IOException {
 		
 		List<AttackGraph> graphs=new LinkedList<AttackGraph>();
