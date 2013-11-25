@@ -15,10 +15,17 @@ public class Conjunct implements Writable{
 
 	public Conjunct(List<Fact> facts) {
 		super();
+		
+		Fact[] temp=new Fact[facts.size()];
+		
+		int counter=0;
 		for(Fact f:facts)
 		{
-			facts.add(f);
+			temp[counter]=f;
+			counter++;
 		}
+		
+		this.facts.set(temp);
 	}
 
 	public ArrayWritable getFacts() {

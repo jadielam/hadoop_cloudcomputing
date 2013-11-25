@@ -13,6 +13,10 @@ import org.apache.hadoop.io.Text;
 public class Fact extends FunctionElement implements Writable {
 	private Text predicate;
 	private ArrayWritable constants=new ArrayWritable(Constant.class);
+
+	public Text getText(){
+		return predicate;
+	}
 	
 	public Fact()
 	{
@@ -21,10 +25,15 @@ public class Fact extends FunctionElement implements Writable {
 	
 	public Fact(String predicate, List<Constant> constants) {
 		this.predicate = new Text(predicate);
-		for(Constant c:constants)
-		{
-		constants.add(c);
+		this.constants=new ArrayWritable(Constant.class);
+		Constant[] temp=new Constant[constants.size()];
+		
+		int counter=0;
+		for (Constant a : constants){
+			temp[counter]=a;
+			counter++;
 		}
+		this.constants.set(temp);
 	}
 	
 	public Text getPredicate() {

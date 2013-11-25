@@ -53,13 +53,9 @@ public class LFunction implements Writable {
     
     public DerivedNode getDerivedNode(Fact f){
     	if (InvertedMap.containsKey(f)){
-    		List<Node> nodes=InvertedMap.get(f);
+    		DerivedNode node=(DerivedNode)InvertedMap.get(f);
     		
-    		for (Node node : nodes){
-    			if (node instanceof DerivedNode){
-    				return (DerivedNode) node;
-    			}
-    		}
+    		return node;
     	}
     	return null;
     }
