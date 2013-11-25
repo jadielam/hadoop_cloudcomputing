@@ -17,13 +17,13 @@ import org.apache.hadoop.mapred.Reporter;
 
 import algorithm.MapAlgorithm;
 
-public class MapClass extends MapReduceBase implements Mapper<LongWritable, Text, Text, AttackGraph>{
+public class MapClass extends MapReduceBase implements Mapper<LongWritable, Text, LongWritable, AttackGraph>{
 
-	private Text word=new Text("Stub");
+	private LongWritable word=new LongWritable(1);
 	
 	@Override
 	public void map(LongWritable key, Text value,
-			OutputCollector<Text, AttackGraph> output, Reporter arg3)
+			OutputCollector<LongWritable, AttackGraph> output, Reporter arg3)
 			throws IOException {
 		
 		String lineTemp=value.toString();

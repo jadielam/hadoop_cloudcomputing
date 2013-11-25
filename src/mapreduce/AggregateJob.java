@@ -4,6 +4,7 @@ import graph.AttackGraph;
 
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapred.FileInputFormat;
 import org.apache.hadoop.mapred.JobClient;
@@ -31,7 +32,7 @@ public class AggregateJob extends Configured implements Tool{
 		JobConf conf1=new JobConf(AggregateJob.class);
 		conf1.setJobName("attackgraph");
 		
-		conf1.setOutputKeyClass(Text.class);
+		conf1.setOutputKeyClass(LongWritable.class);
 		conf1.setOutputValueClass(AttackGraph.class);
 		
 		conf1.setMapperClass(MapClass.class);
