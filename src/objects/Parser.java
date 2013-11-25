@@ -26,13 +26,21 @@ public class Parser {
 	public static TraceStep scan(String s)
 	{
 		
-		Pattern p1 = Pattern.compile("\\((.*)\\)");
-        Matcher m = p1.matcher(s);
+	Pattern p0 = Pattern.compile("\\((.*)\\)");
+        Matcher m = p0.matcher(s);
         m.find();
-        String text = m.group(1);
-        String interactionrule = StringUtils.substringBefore(text, ",");
+       
+        Pattern p1=Pattern.compile("\\((.*?)\\),\\s");
+        m = p1.matcher(s);
+        m.find();
+        String interactionrule = m.group(1);
+        String last=interactionrule.substring(interactionrule.length() - 1);
+		if(!last.equals(")"))
+		{
+			interactionrule=interactionrule+")";
+		}
         
-        Pattern p2=Pattern.compile(",\\s(.*?),\\s\\[");
+        Pattern p2=Pattern.compile("\\),\\s(.*?),\\s\\[");
         m = p2.matcher(s);
         m.find();
         String fact = m.group(1);
