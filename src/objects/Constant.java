@@ -1,24 +1,27 @@
 package objects;
 
-import java.io.Serializable;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
+import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.Text;
 
-public class Constant implements Serializable {
+public class Constant implements Writable {
 	
-	private static final long serialVersionUID= 7526472295622776149L;
-	
-	private int id;
-	private String text;
+	private IntWritable id;
+	private Text text;
 	
 	public Constant(int id, String text) {
-		this.id = id;
-		this.text = text;
+		this.id = new IntWritable(id);
+		this.text = new Text(text);
 	}	
 	
-	public int getId() {
+	public IntWritable getId() {
 		return id;
 	}
 	
-	public String getText() {
+	public Text getText() {
 		return text;
 	}
 	
@@ -41,6 +44,15 @@ public class Constant implements Serializable {
 		return true;
 	}
 	
+	public void write(DataOutput out) throws IOException{
+		id.write(out);
+		text.write(out);
+	}
+	
+	public void readFields(DataInput in) throws IOException {
+		id.readFields(in);
+		text.readFields(in);
+	}
 	 @Override
 	public int hashCode() {
 		final int prime = 31;
