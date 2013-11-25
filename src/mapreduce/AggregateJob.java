@@ -28,24 +28,23 @@ public class AggregateJob extends Configured implements Tool{
 	
 	public int run(String[] argvs) throws Exception {
 		
-		JobConf conf=new JobConf(AggregateJob.class);
-		conf.setJobName("attackgraph");
+		JobConf conf1=new JobConf(AggregateJob.class);
+		conf1.setJobName("attackgraph");
 		
-		conf.setOutputKeyClass(Text.class);
-		conf.setOutputValueClass(AttackGraph.class);
+		conf1.setOutputKeyClass(Text.class);
+		conf1.setOutputValueClass(AttackGraph.class);
 		
-		conf.setMapperClass(MapClass.class);
-		conf.setReducerClass(ReduceClass.class);
+		conf1.setMapperClass(MapClass.class);
+		conf1.setReducerClass(ReduceClass.class);
 		
-		FileInputFormat.addInputPath(conf, new Path(argvs[0]));
-		FileOutputFormat.setOutputPath(conf, new Path(argvs[1]));
+		//TODO: Stub to delete later.
+		conf1.setNumMapTasks(1);
+		conf1.setNumReduceTasks(1);
 		
-		JobClient.runJob(conf);
+		FileInputFormat.addInputPath(conf1, new Path(argvs[0]));
+		FileOutputFormat.setOutputPath(conf1, new Path(argvs[1]));
+		
+		JobClient.runJob(conf1);
 		return 0;
 	}
-
-	
-
-	
-
 }
