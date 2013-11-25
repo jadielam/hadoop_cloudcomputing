@@ -7,7 +7,6 @@ package graph;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.util.Objects;
 
 import org.apache.hadoop.io.Writable;
 
@@ -25,7 +24,8 @@ public abstract class Node implements Writable {
 	public Node(){
 		this.element=new InteractionRule();
 	}
-    public Node(FunctionElement element) {
+
+	public Node(FunctionElement element) {
         this.element=element;
     }
     

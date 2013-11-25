@@ -4,7 +4,7 @@ import java.io.DataOutput;
 import java.io.IOException;
 
 import org.apache.hadoop.io.Writable;
-import org.apache.hadoop.io.IntWritable;
+
 import org.apache.hadoop.io.Text;
 public class InteractionRule extends FunctionElement implements Writable {
 	
