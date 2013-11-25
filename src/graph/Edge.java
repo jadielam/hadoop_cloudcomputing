@@ -71,7 +71,7 @@ public class Edge implements Writable {
     }
 
     public String toString(){
-    	return source+"---"+destination;
+    	return source+" -> "+destination;
     }
 	@Override
 	public void readFields(DataInput in) throws IOException {
