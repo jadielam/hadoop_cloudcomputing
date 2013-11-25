@@ -30,7 +30,7 @@ public class AggregateJob2 extends Configured implements Tool{
 	
 	public int run(String[] argvs) throws Exception {
 		
-		JobConf conf=new JobConf(AggregateJob.class);
+		JobConf conf=new JobConf(AggregateJob2.class);
 		conf.setJobName("union");
 		
 		conf.setOutputKeyClass(Text.class);

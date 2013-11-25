@@ -2,6 +2,7 @@ package objects;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -109,7 +110,7 @@ public class Parser {
 	public static void main(String args[])
 	{
 	String fileName="/hadoop_cloudcomputing/src/testing";
-	        Path path = Paths.get(fileName);
+	        Path path = Path.get(fileName);
 	        Scanner scanner = new Scanner(path);
 	        List<String> inputs=new ArrayList<String>(); 
 	        //read file line by line
