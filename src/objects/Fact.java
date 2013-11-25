@@ -12,7 +12,7 @@ import org.apache.hadoop.io.Text;
 
 public class Fact implements Writable, FunctionElement {
 	private Text predicate;
-	private ArrayWritable constants=new ArrayWritable(Constant.class,null);
+	private ArrayWritable constants=new ArrayWritable(Constant.class);
 	
 	public Fact()
 	{}
