@@ -1,23 +1,39 @@
 package objects;
 
-import java.io.Serializable;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 import java.util.List;
 
-public class Conjunct implements Serializable {
+import org.apache.hadoop.io.ArrayWritable;
+import org.apache.hadoop.io.Writable;
+
+public class Conjunct implements Writable{
 	
-	private static final long serialVersionUID= 7526472295622776150L;
 	
-	private List<Fact> facts;
+	private ArrayWritable facts=new ArrayWritable(Fact.class,null);
 
 	public Conjunct(List<Fact> facts) {
 		super();
-		this.facts = facts;
+		for(Fact f:facts)
+		{
+			facts.add(f);
+		}
 	}
 
-	public List<Fact> getFacts() {
+	public ArrayWritable getFacts() {
 		return facts;
 	}
 	
+	public void write(DataOutput out) throws IOException{
+        facts.write(out);
+       
+}
+
+public void readFields(DataInput in) throws IOException {
+       facts.readFields(in);
+        
+}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
