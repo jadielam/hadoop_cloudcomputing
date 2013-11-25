@@ -97,42 +97,22 @@ public class AttackGraph implements Writable {
 	@Override
 	public void readFields(DataInput in) throws IOException {
 		
-		try{
-		Nr.readFields(in);
-		}
-		catch(Exception e){
-			e.printStackTrace();
-		}
-		try{
-		Np.readFields(in);
-		}
-		catch (Exception e){
-			e.printStackTrace();
-		}
-		try{
-		Nd.readFields(in);
-		}
-		catch(Exception e){
-			e.printStackTrace();
-		}
-		try{
-		E.readFields(in);
-		}
-		catch(Exception e){
-			e.printStackTrace();
-		}
-		Lf.readFields(in);
 		
+		//Nr.readFields(in);
+		//Np.readFields(in);
+		//Nd.readFields(in);
+		//E.readFields(in);
+		Lf.readFields(in);
 		G.readFields(in);
 		
 	}
 
 	@Override
 	public void write(DataOutput out) throws IOException {
-		Nr.write(out);
-		Np.write(out);
-		Nd.write(out);
-		E.write(out);
+		//Nr.write(out);
+		//Np.write(out);
+		//Nd.write(out);
+		//E.write(out);
 		Lf.write(out);
 		G.write(out);
 	}
