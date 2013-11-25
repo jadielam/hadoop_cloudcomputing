@@ -70,6 +70,9 @@ public class Edge implements Writable {
     
     }
 
+    public String toString(){
+    	return source+"---"+destination;
+    }
 	@Override
 	public void readFields(DataInput in) throws IOException {
 		// TODO Auto-generated method stub

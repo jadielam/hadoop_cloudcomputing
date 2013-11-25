@@ -1,6 +1,7 @@
 package mapreduce;
 
 import graph.AttackGraph;
+import graphline.Graph;
 
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
@@ -33,7 +34,7 @@ public class AggregateJob extends Configured implements Tool{
 		conf1.setJobName("attackgraph");
 		
 		conf1.setOutputKeyClass(LongWritable.class);
-		conf1.setOutputValueClass(AttackGraph.class);
+		conf1.setOutputValueClass(Graph.class);
 		
 		conf1.setMapperClass(MapClass.class);
 		conf1.setReducerClass(ReduceClass.class);

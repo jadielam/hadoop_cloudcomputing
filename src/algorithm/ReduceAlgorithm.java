@@ -11,44 +11,47 @@ import graph.Goal;
 import graph.LFunction;
 import graph.Node;
 import graph.PrimitiveNode;
+import graphline.Graph;
+
 import org.apache.hadoop.io.MapWritable;
+import org.apache.hadoop.io.Text;
 
 public class ReduceAlgorithm {
 
-	List<AttackGraph> graphsToReduce;
+	List<Graph> graphsToReduce;
 	
-	public ReduceAlgorithm(List<AttackGraph> graphs){
+	public ReduceAlgorithm(List<Graph> graphs){
 		this.graphsToReduce=graphs;
 		
 	}
 	
-	public AttackGraph reduce(){
+	public Graph reduce(){
 		
 		MapWritable NrFinal=new MapWritable();
 		MapWritable NpFinal=new MapWritable();
 		MapWritable NdFinal=new MapWritable();
 		MapWritable EFinal=new MapWritable();
 		
-		LFunction LFinal=new LFunction();
-		Goal goalFinal=new Goal();
+		
+		Text goalFinal=new Text("");
 		
 		//Do the reduction here.
-		for (AttackGraph graph : graphsToReduce){
+		for (Graph graph : graphsToReduce){
 			
 			
 			NrFinal.putAll(graph.getNr());
 			NpFinal.putAll(graph.getNp());
 			NdFinal.putAll(graph.getNd());
 			EFinal.putAll(graph.getE());
-			LFinal.addAll(graph.getLf());
-			reduceGoal(goalFinal, graph.getG());
+		
+			reduceGoal(goalFinal, graph.getGoal());
 		}
 		
-		return new AttackGraph(NrFinal, NpFinal, NdFinal, EFinal, LFinal, goalFinal);
+		return new Graph(NrFinal, NpFinal, NdFinal, EFinal, goalFinal);
 	}
 	
-	private void reduceGoal(Goal g1, Goal g2){
-		
+	private void reduceGoal(Text g1, Text g2){
+		g1=g2;
 	}
 	
 }

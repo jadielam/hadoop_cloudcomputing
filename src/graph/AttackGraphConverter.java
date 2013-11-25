@@ -9,6 +9,8 @@
  */
 
 package graph;
+import graphline.Graph;
+
 import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -19,7 +21,7 @@ import org.apache.hadoop.io.Writable;
 
 public class AttackGraphConverter {
     
-    public String ConvertToGraph(AttackGraph graph){
+    public String ConvertToGraph(Graph graph){
         
         StringBuilder attack_graph=new StringBuilder();
         

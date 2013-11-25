@@ -67,10 +67,10 @@ public class Node implements Writable {
         element.write(out);
 }
 
-public void readFields(DataInput in) throws IOException {
+    public void readFields(DataInput in) throws IOException {
        
         element.readFields(in);
-}
+    }
     
 }
 
