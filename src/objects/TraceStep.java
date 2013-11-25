@@ -1,11 +1,12 @@
 package objects;
 
-import java.io.Serializable;
+import java.io.DataInput;
+import java.io.DataOutput;
+import java.io.IOException;
 
-public class TraceStep implements Serializable, FunctionElement {
-	
-	private static final long serialVersionUID= 7526472295622776154L;
-	
+import org.apache.hadoop.io.Writable;
+
+public class TraceStep implements Writable,FunctionElement {
 	private InteractionRule interactionrule;
 	private Fact fact;
 	private Conjunct conjunct;
@@ -63,9 +64,18 @@ public class TraceStep implements Serializable, FunctionElement {
 		return true;
 	}
 	@Override
-	public String getText() {
-		// TODO Auto-generated method stub
-		return null;
+	public void readFields(DataInput in) throws IOException {
+		interactionrule.readFields(in);
+		interactionrule.readFields(in);
+		interactionrule.readFields(in);
+		
+	}
+	@Override
+	public void write(DataOutput out) throws IOException {
+		interactionrule.write(out);
+		fact.write(out);
+		conjunct.write(out);
+		
 	}
 	
 
