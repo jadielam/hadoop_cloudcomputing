@@ -44,7 +44,7 @@ public class ReduceClass extends MapReduceBase implements Reducer<LongWritable, 
 			reduceMap(NpFinal, a.getNp());
 			reduceMap(NdFinal, a.getNd());
 			reduceMap(EFinal, a.getE());
-			if (counter==0) break;
+			
 			counter++;
 		}
 		
