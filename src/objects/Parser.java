@@ -20,6 +20,11 @@ public class Parser {
 		for(String input:inputs)
 		 {
 			TraceStep t=scan(input);
+			System.out.println("--------------------------------------------------");
+			System.out.println("InteractionRul :"+t.getInteractionrule().toString());
+			System.out.println("Fact :"+t.getFact().toString());
+			System.out.println("Conjunt :"+t.getConjunct().toString());
+			System.out.println("--------------------------------------------------");
 			System.out.println(input);
 			tracesteplist.add(t);
 		}	
@@ -110,14 +115,14 @@ public class Parser {
 	
 	public static void main(String args[]) throws IOException
 	{
-	String fileName="/hadoop_cloudcomputing/src/testing";
+	String fileName="C:\\Users\\sharanya\\workspace1\\c1\\src\\testing";
 	        Path path = Paths.get(fileName);
 	        Scanner scanner = new Scanner(path);
 	        List<String> inputs=new ArrayList<String>(); 
 	        //read file line by line
-	        scanner.useDelimiter(System.getProperty("line.separator"));
-	        while(scanner.hasNext()){
-	        	inputs.add(scanner.next());
+	        //scanner.useDelimiter(System.getProperty("line.separator"));
+	        while(scanner.hasNextLine()){
+	        	inputs.add(scanner.nextLine());
 	        }
 	        inputparser(inputs);
 	        scanner.close();
