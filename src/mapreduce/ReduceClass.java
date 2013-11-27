@@ -29,7 +29,7 @@ public class ReduceClass extends MapReduceBase implements Reducer<LongWritable, 
 		int counter=0;
 		while (values.hasNext()){
 			graphs.add(values.next());
-			if (counter==0) break;
+			if (counter==1) break;
 			counter++;
 		}
 		

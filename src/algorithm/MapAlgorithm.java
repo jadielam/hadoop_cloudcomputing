@@ -58,6 +58,9 @@ public class MapAlgorithm {
 				n=builder.getDerivedNode(fact);
 				L.addEntry(n, fact);
 			}
+			else{
+				L.addEntry(n, fact);
+			}
 			
 			//6. E<- E U {(n, r)}
 			Edge edge=new Edge(n, r);
@@ -86,8 +89,10 @@ public class MapAlgorithm {
 					}
 					
 				}
+				
 				Edge e=new Edge(r, c);
 				E.add(e);
+				
 				
 			}
 			
