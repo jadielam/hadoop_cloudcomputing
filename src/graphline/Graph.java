@@ -5,7 +5,7 @@ import graph.AttackGraphConverter;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.util.Map;
+
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.MapWritable;
