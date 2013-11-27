@@ -33,25 +33,23 @@ public class AttackGraphConverter {
          int counter=1;
         
          MapWritable Nd=graph.getNd();
-         Set<Entry<Writable, Writable>> entries=Nd.entrySet();
-                
-         for(Entry e: entries){
+         for(Entry<Writable, Writable> e: Nd.entrySet()){
         	 derivedNodes.put((Text)e.getKey(),counter);
         	 nodes.put((Text)e.getKey(), counter);
         	 counter++;
          }
         
          MapWritable Nr=graph.getNr();
-         Set<Entry<Writable, Writable>> entries1=Nr.entrySet();
+         
         
-         for(Entry e : entries1){
+         for(Entry<Writable, Writable> e : Nr.entrySet()){
         	 derivationNodes.put((Text)e.getKey(),counter);
         	 nodes.put((Text)e.getKey(), counter);
         	 counter++;
          }
         
          MapWritable Np=graph.getNp();
-         Set<Entry<Writable, Writable>> entries2=Nr.entrySet();
+         Set<Entry<Writable, Writable>> entries2=Np.entrySet();
         
          for(Entry  e : entries2){
         	 primitiveNodes.put((Text)e.getKey(),counter);

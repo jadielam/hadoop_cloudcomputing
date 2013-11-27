@@ -7,6 +7,7 @@ import java.io.DataOutput;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
 
 
 import org.apache.hadoop.io.LongWritable;
@@ -122,5 +123,30 @@ public class Graph implements Writable{
 		
 		return temp;
 		
+	}
+	
+	public String toString1(){
+		StringBuilder sb=new StringBuilder();
+		for (Entry<Writable, Writable> e : Nr.entrySet()){
+			sb.append(e.getKey().toString());
+		}
+		sb.append("\n");
+		for (Entry<Writable, Writable> e : Nd.entrySet()){
+			sb.append(e.getKey().toString());
+		}
+		
+		sb.append("\n");
+		for (Entry<Writable, Writable> e : Np.entrySet()){
+			sb.append(e.getKey().toString());
+		}
+		
+		sb.append("\n");
+		for (Entry<Writable, Writable> e : E.entrySet()){
+			sb.append(e.getKey().toString());
+		}
+		
+		sb.append("\n");
+		
+		return sb.toString();
 	}
 }
