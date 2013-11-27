@@ -26,15 +26,17 @@ public class ReduceClass extends MapReduceBase implements Reducer<LongWritable, 
 			throws IOException {
 		
 		List<Graph> graphs=new LinkedList<Graph>();
+		int counter=0;
 		while (values.hasNext()){
 			graphs.add(values.next());
+			if (counter==0) break;
+			counter++;
 		}
 		
 		
 		ReduceAlgorithm reducer=new ReduceAlgorithm(graphs);
 		Graph reducedGraph=reducer.reduce();
-		reducedGraph.addGraph(graphs.get(0));
-		
+				
 		output.collect(key,  reducedGraph);
 		
 	}

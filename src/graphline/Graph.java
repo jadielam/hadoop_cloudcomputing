@@ -119,8 +119,7 @@ public class Graph implements Writable{
 	public String toString(){
 		AttackGraphConverter converter=new AttackGraphConverter();
 		String temp=converter.ConvertToGraph(this);
-		temp=temp+"\n";
-		temp=temp+graphList.get(0).toString();
+		
 		return temp;
 		
 	}
