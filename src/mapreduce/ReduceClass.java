@@ -30,8 +30,7 @@ public class ReduceClass extends MapReduceBase implements Reducer<LongWritable, 
 			throws IOException {
 		
 		List<Graph> graphs=new LinkedList<Graph>();
-		int counter=0;
-		
+				
 		MapWritable NrFinal=new MapWritable();
 		MapWritable NpFinal=new MapWritable();
 		MapWritable NdFinal=new MapWritable();
@@ -44,8 +43,8 @@ public class ReduceClass extends MapReduceBase implements Reducer<LongWritable, 
 			reduceMap(NpFinal, a.getNp());
 			reduceMap(NdFinal, a.getNd());
 			reduceMap(EFinal, a.getE());
-			if (counter==1) break;
-			counter++;
+			
+			
 		}
 		
 		
