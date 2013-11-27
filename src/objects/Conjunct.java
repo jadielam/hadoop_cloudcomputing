@@ -14,9 +14,12 @@ public class Conjunct {
 	public String toString(){
 		StringBuilder sb=new StringBuilder();
 		sb.append("(");
-		for (Fact fact : facts){
-			sb.append(fact).append(", ");
+		for(int i=0;i<facts.size()-1;i++)
+		{
+			sb.append(facts.get(i).toString()).append(", ");
 		}
+		sb.append(facts.get(facts.size()-1));
+		
 		sb.append(")");
 		
 		return sb.toString();
