@@ -1,7 +1,12 @@
 package objects;
 
+import graph.AttackGraph;
+import graph.Goal;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import algorithm.MapAlgorithm;
 
 public class ParserTester {
 
@@ -17,6 +22,11 @@ public class ParserTester {
 		for (TraceStep t : ts){
 			System.out.println(t.toString());
 		}
+		
+		MapAlgorithm alg=new MapAlgorithm();
+		Goal g=new Goal();
+		AttackGraph graph=alg.getGraph(ts, g);
+		System.out.println(graph.toString());
 
 	}
 

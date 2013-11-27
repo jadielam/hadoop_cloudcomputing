@@ -55,4 +55,19 @@ public class AttackGraph {
         return G;
     }
 	
+    public String toString(){
+    	StringBuilder sb=new StringBuilder();
+    	sb.append(Nr.toString());
+    	sb.append("\n");
+    	sb.append(Nd.toString());
+    	sb.append("\n");
+    	sb.append(Np.toString());
+    	sb.append("\n");
+    	sb.append(E.toString());
+    	sb.append("\n");
+    	
+    	return sb.toString();
+    
+    }
+    
 }

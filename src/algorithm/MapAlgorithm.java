@@ -61,6 +61,7 @@ public class MapAlgorithm {
 			else{
 				L.addEntry(n, fact);
 			}
+			Nd.add(n);
 			
 			//6. E<- E U {(n, r)}
 			Edge edge=new Edge(n, r);

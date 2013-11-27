@@ -29,7 +29,7 @@ public class ReduceClass extends MapReduceBase implements Reducer<LongWritable, 
 			OutputCollector<LongWritable, Graph> output, Reporter reporter)
 			throws IOException {
 		
-		List<Graph> graphs=new LinkedList<Graph>();
+		
 				
 		MapWritable NrFinal=new MapWritable();
 		MapWritable NpFinal=new MapWritable();
