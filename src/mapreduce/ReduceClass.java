@@ -37,14 +37,15 @@ public class ReduceClass extends MapReduceBase implements Reducer<LongWritable, 
 		MapWritable EFinal=new MapWritable();
 		Text goalFinal=new Text("");
 
+		int counter=0;
 		while (values.hasNext()){
 			Graph a=values.next();
 			reduceMap(NrFinal, a.getNr());
 			reduceMap(NpFinal, a.getNp());
 			reduceMap(NdFinal, a.getNd());
 			reduceMap(EFinal, a.getE());
-			
-			
+			if (counter==0) break;
+			counter++;
 		}
 		
 		
