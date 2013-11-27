@@ -20,11 +20,13 @@ public class Fact extends FunctionElement implements Writable {
 		StringBuilder sb=new StringBuilder("");
 		sb.append(predicate.toString());
 		sb.append("(");
-		for (Constant c : constants){
-			sb.append(c.toString()).append(", ");
+		for(int i=0;i<constants.size()-1;i++)
+		{
+			sb.append(constants.get(i).toString()).append(", ");
 		}
+		sb.append(constants.get(constants.size()-1));
 		sb.append(")");
-		return predicate.toString();
+		return sb.toString();
 	}
 	
 	public Text getText(){
