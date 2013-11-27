@@ -33,7 +33,7 @@ public class ReduceClass extends MapReduceBase implements Reducer<LongWritable, 
 		
 		ReduceAlgorithm reducer=new ReduceAlgorithm(graphs);
 		Graph reducedGraph=reducer.reduce();
-		reducedGraph.setNoGraphs(graphs.get(0).getNr().size());
+		reducedGraph.addGraph(graphs.get(0));
 		
 		output.collect(key,  reducedGraph);
 		

@@ -5,6 +5,8 @@ import graph.AttackGraphConverter;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 import org.apache.hadoop.io.LongWritable;
@@ -19,6 +21,7 @@ public class Graph implements Writable{
 	private MapWritable Nd;
 	private Text goal;
 	private LongWritable noGraphs;
+	private List<Graph> graphList=new ArrayList<Graph>();
 	
 	public Graph(){
 		this.E=new MapWritable();
@@ -42,6 +45,9 @@ public class Graph implements Writable{
 		}
 	}
 	
+	public void addGraph(Graph graph){
+		this.graphList.add(graph);
+	}
 	public void addPrimitiveNode(Text node){
 		if (!Np.containsKey(node)){
 			Np.put(node, new LongWritable(1));
@@ -114,7 +120,7 @@ public class Graph implements Writable{
 		AttackGraphConverter converter=new AttackGraphConverter();
 		String temp=converter.ConvertToGraph(this);
 		temp=temp+"\n";
-		temp=temp+noGraphs;
+		temp=temp+graphList.get(0).toString();
 		return temp;
 		
 	}
