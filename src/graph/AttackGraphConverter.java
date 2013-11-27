@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Set;
 
+import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.MapWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.Writable;
@@ -88,8 +89,25 @@ public class AttackGraphConverter {
         
          MapWritable E=graph.getE();
          Set<Entry<Writable, Writable>> entries3=E.entrySet();
-         for(Entry e : entries3){
-        	 attack_graph.append((Text)e.getKey());
+         for(Entry<Writable, Writable> e : entries3){
+        	 Text temp=(Text)e.getKey();
+        	 String temp1=temp.toString();
+        	 int a=temp1.indexOf(" -> ");
+        	 String sourceS=temp1.substring(0, a);
+        	 String destinationS=temp1.substring(a+4);
+        	 Text sourceT=new Text(sourceS);
+        	 Text destinationT=new Text(destinationS);
+        	 
+        	 int sourceId=0;
+        	 int destinationId=0;
+        	 if (nodes.containsKey(sourceT)){
+        		 sourceId=nodes.get(sourceT);
+        	 }
+        	 if (nodes.containsKey(destinationT)){
+        		 destinationId=nodes.get(destinationT);
+        	 }
+        	        	 
+        	 attack_graph.append(sourceId).append(" -> ").append(destinationId);
         	 attack_graph.append(System.getProperty("line.separator"));
          }
         
