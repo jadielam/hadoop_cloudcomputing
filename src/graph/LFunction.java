@@ -8,6 +8,7 @@ package graph;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,18 +26,18 @@ import objects.*;
  *
  * @author Gautham
  */
-public class LFunction implements Writable {
+public class LFunction {
 
 	
-	private MapWritable LFunction_Map;
-	private MapWritable InvertedMap;
+	private HashMap<Node, FunctionElement> LFunction_Map;
+	private HashMap<FunctionElement, List<Node>> InvertedMap;
     
     public LFunction(){
-    	LFunction_Map=new MapWritable();
-    	InvertedMap=new MapWritable();
+    	LFunction_Map=new HashMap<Node, FunctionElement>();
+    	InvertedMap=new HashMap<FunctionElement, List<Node>>();
     }
         
-    public MapWritable getLFunction_Map() {
+    public HashMap<Node, FunctionElement> getLFunction_Map() {
         return LFunction_Map;
     }
     
@@ -45,24 +46,36 @@ public class LFunction implements Writable {
     		LFunction_Map.put(key, value);
     	}
     	
+    	
     	if (!InvertedMap.containsKey(value)){
-    		InvertedMap.put(value, key);
+    		List<Node> list=new ArrayList<Node>();
+    		list.add(key);
+    		InvertedMap.put(value, list);
     		
     	}
     }
     
     public DerivedNode getDerivedNode(Fact f){
     	if (InvertedMap.containsKey(f)){
-    		DerivedNode node=(DerivedNode)InvertedMap.get(f);
+    		List<Node> l=InvertedMap.get(f);
+    		for (Node n : l){
+    			if (n instanceof DerivedNode){
+    				return (DerivedNode)n;
+    			}
+    		}
     		
-    		return node;
+    		
+    		
     	}
     	return null;
     }
     
     public Node getNode(Fact f){
     	if (InvertedMap.containsKey(f)){
-    		return (Node)InvertedMap.get(f);
+    		List<Node> l=InvertedMap.get(f);
+    		for (Node n : l){
+    			return n;
+    		}
     	}
     	return null;
     }
@@ -70,8 +83,8 @@ public class LFunction implements Writable {
     public void addAll(LFunction lf){
     	if (lf!=null){
     		
-    		Set<Entry<Writable, Writable>> entries=lf.LFunction_Map.entrySet();
-        	for (Entry<Writable, Writable> e : entries){
+    		Set<Entry<Node, FunctionElement>> entries=lf.LFunction_Map.entrySet();
+        	for (Entry<Node, FunctionElement> e : entries){
         		Node n=(Node)e.getKey();
         		FunctionElement fe=(FunctionElement)e.getValue();
         		if (!this.LFunction_Map.containsKey(n)){
@@ -82,19 +95,6 @@ public class LFunction implements Writable {
     	}
     }
 
-	@Override
-	public void readFields(DataInput in) throws IOException {
-		LFunction_Map.readFields(in);
-		InvertedMap.readFields(in);
-		
-	}
-
-	@Override
-	public void write(DataOutput out) throws IOException {
-		LFunction_Map.write(out);
-		InvertedMap.write(out);
-		
-	}
-   
+	  
     
 }

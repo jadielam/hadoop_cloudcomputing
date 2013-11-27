@@ -77,10 +77,12 @@ public class MapAlgorithm {
 					if (builder.isPrimitive(f)){
 						c=builder.getPrimitiveNode(f);
 						Np.add((PrimitiveNode)c);
+						L.addEntry(c, f);
 					}
 					else{
 						c=builder.getDerivedNode(f);
 						Nd.add((DerivedNode)c);
+						L.addEntry(c, f);
 					}
 					
 				}
