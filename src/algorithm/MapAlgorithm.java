@@ -45,7 +45,7 @@ public class MapAlgorithm {
 		for (TraceStep t : traceSteps){
 			
 			//3. Create derivation node
-			DerivationNode r=builder.getDerivationNode(t);
+			DerivationNode r=builder.getDerivationNode(t.getInteractionrule());
 			Nr.add(r);
 			L.addEntry(r, t.getInteractionrule());
 			
