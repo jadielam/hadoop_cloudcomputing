@@ -18,6 +18,7 @@ public class Graph implements Writable{
 	private MapWritable Np;
 	private MapWritable Nd;
 	private Text goal;
+	private LongWritable noGraphs;
 	
 	public Graph(){
 		this.E=new MapWritable();
@@ -105,9 +106,16 @@ public class Graph implements Writable{
 		return goal;
 	}
 	
+	public void setNoGraphs(int a){
+		noGraphs=new LongWritable(a);
+	}
+	
 	public String toString(){
 		AttackGraphConverter converter=new AttackGraphConverter();
-		return converter.ConvertToGraph(this);
+		String temp=converter.ConvertToGraph(this);
+		temp=temp+"\n";
+		temp=temp+noGraphs;
+		return temp;
 		
 	}
 }

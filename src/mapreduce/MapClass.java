@@ -26,7 +26,7 @@ import algorithm.MapAlgorithm;
 
 public class MapClass extends MapReduceBase implements Mapper<LongWritable, Text, LongWritable, Graph>{
 
-	private LongWritable word=new LongWritable(1);
+	
 	
 	@Override
 	public void map(LongWritable key, Text value,
