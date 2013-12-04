@@ -45,9 +45,9 @@ public class MapAlgorithm {
 		for (TraceStep t : traceSteps){
 			
 			//3. Create derivation node
-			DerivationNode r=builder.getDerivationNode(t.getInteractionrule());
+			DerivationNode r=builder.getDerivationNode(t);
 			Nr.add(r);
-			L.addEntry(r, t.getInteractionrule());
+			L.addEntry(r, t);
 			
 			//4. Look up n in Nd such that L(n)=Fact
 			Fact fact=t.getFact();
